@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 
@@ -8,6 +8,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 //import ReactHtmlParser
 import ReactHtmlParser from 'react-html-parser'
+import Axios from 'axios'; 
 
 function Reference() {
     const [referenceContent, setReferenceContent] = useState({
@@ -16,6 +17,24 @@ function Reference() {
     })
 
     const [viewContent, setViewContent] = useState([]);
+
+    useEffect(()=>{
+        Axios.get('http://localhost:8000/list').then((response)=>{
+          setViewContent(response.data);
+        })
+      },[viewContent])
+    
+
+    const submitReview = ()=>{
+        Axios.post('http://localhost:8000/add', {
+          title: referenceContent.title,
+          content: referenceContent.content
+          
+        }).then(()=>{
+          alert('등록 완료!');
+          console.log(referenceContent.title);
+        })
+      };
 
     const getValue = e => {
         const { name, value } = e.target;
@@ -32,9 +51,9 @@ function Reference() {
                 <div>
                     {viewContent.map(element =>
                         <div>
-                            <h2>{element.title}</h2>
+                            <h2>{element.제목}</h2>
                             <div>
-                                {ReactHtmlParser(element.content)}
+                                {ReactHtmlParser(element.내용)}
                             </div>
                         </div>)}
                 </div>
@@ -86,10 +105,10 @@ function Reference() {
                     />
                 </div>
             </div>
-            <Button onClick={() => {
-                setViewContent(viewContent.concat({ ...referenceContent }));
-            }
-            }>입력</Button>
+            <Button 
+            className="submit-button"
+            onClick={submitReview}
+            >입력</Button>
         </Container>
     )
 }
