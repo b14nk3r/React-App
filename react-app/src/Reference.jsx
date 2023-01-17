@@ -19,14 +19,14 @@ function Reference() {
     const [viewContent, setViewContent] = useState([]);
 
     useEffect(()=>{
-        Axios.get('http://localhost:8000/list').then((response)=>{
+        Axios.get('http://localhost:8080/list').then((response)=>{
           setViewContent(response.data);
         })
       },[viewContent])
     //이것이주석이야sdasdasdasdasd
 
     const submitReview = ()=>{
-        Axios.post('http://localhost:8000/add', {
+        Axios.post('http://localhost:8080/add', {
           title: referenceContent.title,
           content: referenceContent.content
           
@@ -55,6 +55,7 @@ function Reference() {
                             <div>
                                 {ReactHtmlParser(element.내용)}
                             </div>
+                            <img></img>
                         </div>)}
                 </div>
             </div>
@@ -79,7 +80,13 @@ function Reference() {
                     <label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호를 입력하세요." />
                 </div>
+                <form method="POST" action="/upload" enctype="multipart/form-data" >
+                    <input type="file" name="file" />
+                    <button type="submit">전송</button>
+                </form>
+            {/* bootstrap 형식으로 바꿔라 씹새야 */}
                 <div class="form-group">
+                
                     <label for="exampleInputContent1" class="form-label mt-4">내용</label>
                     <CKEditor class="form-control"
                         editor={ClassicEditor}
