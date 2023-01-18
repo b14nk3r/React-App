@@ -8,7 +8,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 //import ReactHtmlParser
 import ReactHtmlParser from 'react-html-parser'
-import Axios from 'axios'; 
+import Axios from 'axios';
+
+var 앙기모디;
 
 function Reference() {
     const [name, setName] = useState('');
