@@ -59,6 +59,4 @@ function App() {
   );
 }
 
-//오ㅐ 푸쉬안돼
-
 export default App;
