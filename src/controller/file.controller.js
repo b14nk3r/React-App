@@ -4,6 +4,8 @@ const { Storage } = require("@google-cloud/storage");
 // Instantiate a storage client with credentials
 const storage = new Storage({ keyFilename: "google-cloud-key.json" });
 const bucket = storage.bucket("real-react-cloud-test.appspot.com");
+const MongoClient = require('mongodb').MongoClient;
+var db;
 
 const upload = async (req, res) => {
   try {

@@ -9,6 +9,7 @@ const initRoutes = require("./src/routes");
 var ang123;
 
 var db;
+var 아아아아아아아아ㅏㅇ;
 
 app.use(cors());
 app.use(express.json());
