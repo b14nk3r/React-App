@@ -1,0 +1,183 @@
+ /******상단바******/
+
+
+
+.navbar-brand{
+}
+/*회사명 콘텐츠 */
+
+.me-auto {
+
+ }
+ /*상단바 아이템*/
+
+.nav-link{
+   
+ }
+ 
+/*상단바 아이템 콘텐츠 */
+
+ .navbar-collapse{
+
+ }
+ 
+ /*상단바 아이템 컨테이너 */
+
+ .top_con{
+
+ }
+/*상단바 전체 컨테이너 */
+
+
+.main_con{
+}
+/*베너 컨텐츠*/
+
+
+
+
+.d-block{ /* 이미지의 크기 균일하게 조정 및 반응형으로 이동 시 옵션 아이콘 같이 이동 */
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+ /******상단바******/
+
+
+/* 메인 콘텐츠 */
+
+
+.main_con{
+    /* margin-top: 100px; */
+    border : 1px solid;     /* 이 그리드를 지우면 헤더 회사소개를 누르면 텍스트를 먹어버림 */
+    /*text-align : center;*/
+  }
+
+
+
+.main_cont > h3 {
+    display : flex;
+    margin-top: 100px;
+    justify-content : center;
+  
+}
+
+
+
+.main_cont > h2 {
+    display : flex;
+    margin-top: 30px;
+    justify-content : center;
+    margin-bottom: 100px;
+   
+}
+
+
+
+  .main_contt{
+  display: inline-block;
+  padding: 40px;
+  }
+
+
+.main_contt > img
+{
+    float: left;
+    width: 589px;
+    height: 419px;
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+.col
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 160px; /* 반응형으로 변환 시 패딩을 임의로 조정해서 다시확인 필요 */
+   
+}
+
+.col > p { margin-bottom: 0.01em; } /* 자간 더 좁힐지 확인 */
+
+
+
+
+/* */
+
+.main_conttt{
+    display: inline-block;
+    padding: 40px; /*확인 다시필요*/
+    }
+  
+  
+  .main_conttt > img
+  {
+      float: right;
+      width: 589px;
+      height: 419px;
+      object-fit: cover;
+      float: right;
+      margin-left: 30px; /* 왼쪽 텍스트와 마진을 줘서 다시확인 필요함 */
+  
+  
+  }
+  
+  .col1
+  {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 160px; /*패딩값 오른쪽으로 정렬하고 왼쪽으로 패딩줘서 확인 다시해야함 */
+    
+  }
+  
+  .col1 > p { margin-bottom: 0.01em; }  /* 자간 더 좁힐지 확인 */
+
+
+  .container1 {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 100px ;
+ }
+ 
+ .box1, .box2, .box3 {
+    margin-left:10px;
+    width: 33%;
+    
+ }
+  
+
+ .container1 .box1 img, .container1 .box2 img, .container1 .box3 img {
+    width: 100%;
+    height: 700px;
+    }
+
+    .container2 > h3 {
+        display : flex;
+        margin-top: 100px;
+        justify-content : center;
+      
+    }
+    
+    
+    .container2 > h2 {
+        display : flex;
+        margin-top: 30px;
+        justify-content : center;
+        margin-bottom: 100px;
+       
+    }
+
+  /* 메인 콘텐츠 */
+
+
+
+
+

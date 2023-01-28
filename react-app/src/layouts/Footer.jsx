@@ -1,8 +1,9 @@
 import React from 'react'
-
+<> </>
 const Footer = () => {
   return (
-    <div>Footer 입니다</div>
+    /*<div>Footer 입니다</div>*/
+    <></>
   )
 }
 
