@@ -7,12 +7,15 @@ var fs = require('fs');
 const path = require('path');   
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId;
 const cors = require('cors');
 const moment = require('moment');
 const s3 = new AWS.S3();
 require("dotenv").config();
 var ang123;
 let url;
+let imgurl;
+
 
 var db;
 var 아아아아아아아아ㅏㅇ;
@@ -56,27 +59,70 @@ const uploader = multer({
   })
 })
 
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "myreactawsbucket",
+    key(req, file, cb) {  
+      file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
+      console.log('오우오우오우'+file.originalname)
+      imgurl = `https://myreactawsbucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
+      cb(null, `original/${path.basename(file.originalname)}`)
+
+  }
+  })
+});
+
+
 app.listen(8080, function() {
     console.log('listening on 8080')
 })
 
+app.post('/img', upload.single('img'), (req, res) => {
+  // 해당 라우터가 정상적으로 작동하면 public/uploads에 이미지가 업로드된다.
+  // 업로드된 이미지의 URL 경로를 프론트엔드로 반환한다.
+  console.log('전달받은 파일', req.file);
+  console.log('저장된 파일의 이름', req.file.filename);
 
+  // 파일이 저장된 경로를 클라이언트에게 반환해준다.
+  const IMG_URL = `http://localhost:4050/uploads/${req.file.filename}`;
+  console.log(IMG_URL);
+  res.json({ url: imgurl });
+});
 
 app.get('/', function (요청, 응답) {
   응답.sendFile(path.join(__dirname, '/react-app/build/index.html'));
 });
 
-
+app.get('/details/:no', function(요청, 응답){
+  //`ObjectId('${parseInt(요청.params.id)}')`
+  db.collection('post').findOne( { _id : ObjectId(요청.params.no)} , function(에러, 결과){
+    console.log("파라미터 id입니다.:"+ 요청.params.no);
+    console.log(결과);
+    응답.send(결과);
+    return;
+  })
+  
+});
 
   app.post('/add', uploader.single("file"), function(요청, 응답){
     const title = 요청.body.title;
     const content = 요청.body.content;
+    var today = new Date();
+
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+
+    var dateString = year + '-' + month  + '-' + day;
+
     console.log('url:' + url);
     console.log(title);
     console.log(요청.body);
+    console.log(dateString);
     응답.send('전송완료')
   
-    db.collection('post').insertOne( { 제목 : title, 내용 : content, url : url } , function(){
+    db.collection('post').insertOne( { 제목 : title, 내용 : content, url : url, 날짜: dateString } , function(){
       console.log('저장완료')
     });
   });

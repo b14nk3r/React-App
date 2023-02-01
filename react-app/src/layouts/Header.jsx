@@ -17,6 +17,7 @@ import Board from "../Board"
 import Company from '../Company'
 import Reference from '../Reference';
 import AdminPassword from '../AdminPassword';
+import ReferenceDetails from '../ReferenceDetails';
 
 const Header = () => {
     return (
@@ -44,6 +45,7 @@ const Header = () => {
                     <Route path="/Board" element={<Board />} />
                     <Route path="/Reference" element={<Reference />} />
                     <Route path="/AdminPassword" element={<AdminPassword />} />
+                    <Route path='/details/:no' element={<ReferenceDetails />} />
                 </Routes>
             </Router>
         </header>

@@ -1,64 +1,43 @@
 import React from 'react'
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
+import { Button, Container } from 'react-bootstrap';
+import { useParams } from "react-router-dom";
+import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import ReactHtmlParser from 'react-html-parser'
-import Axios from 'axios';
-import { Routes, Route, Link } from "react-router-dom";
-
-import Reference from "./Reference";
-import AdminPassword from './AdminPassword';
-
-
-
-
-const ReferenceWrite = () => {
-    
-    const [viewContent, setViewContent] = useState([]);
-useEffect(()=>{
-    Axios.get('http://localhost:8080/list').then((response)=>{
+const Board = () => {
+  const [viewContent, setViewContent] = useState([]);
+  const { no } = useParams();
+  console.log("가져온파라미터입니다:"+no);
+  useEffect(() => {
+    Axios.get(`http://localhost:8080/details/${no}`).then((response) => {
       setViewContent(response.data);
+      const json = JSON.stringify(response.data);
+      console.log("가져온결과입니다:"+json);
     })
-  },[viewContent])
+  }, [])
     return (
-        <div>
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>선택</th>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                </tr>
-            </thead>
-        <tbody>
-            {viewContent.reverse().map((element) => {
-          return (
-            <tr>
-            <td>
-                <input type="checkbox"></input>
-            </td>
-              <td>1</td>
-              <td>{element.제목}</td>
-              <td>{element.내용}</td>
-              <td>2022-03-19</td>
-            </tr>
-          );
-        })}
-
-        </tbody>
-        </Table>
-        <Link to="/AdminPassword"><Button>글쓰기</Button></Link>
-        <Button variant="secondary">수정하기</Button>
-        <Button variant="danger">삭제하기</Button>
-
-        <Routes>
-            <Route path="/AdminPassword" element={<AdminPassword />}></Route>
-        </Routes>
-    </div>
-        
+        <Container>
+           <div class="form-group">
+                <h1>자료실</h1>
+                <div>
+                    
+                        <div>
+                            <h2>{viewContent.제목}</h2>
+                            <div>
+                                {ReactHtmlParser(viewContent.내용)}
+                            </div>
+                            <img></img>
+                        </div>
+                </div>
+            </div>
+            <div>
+                <input type="text" placeholder="제목" />
+                <textarea placeholder="내용"></textarea>
+            </div>
+            <Button>입력</Button>
+        </Container>
     )
 }
 
-export default ReferenceWrite
+
+export default Board

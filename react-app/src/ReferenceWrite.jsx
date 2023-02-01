@@ -4,8 +4,9 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from 'react';
 import ReactHtmlParser from 'react-html-parser'
 import Axios from 'axios';
-import { Routes, Route, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import Reference from "./Reference";
 import AdminPassword from './AdminPassword';
 
