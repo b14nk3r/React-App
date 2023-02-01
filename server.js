@@ -1,12 +1,18 @@
 const express = require('express');
+const AWS = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 const app = express();
 var fs = require('fs');
 const path = require('path');   
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const cors = require('cors');
-const initRoutes = require("./src/routes");
+const moment = require('moment');
+const s3 = new AWS.S3();
+require("dotenv").config();
 var ang123;
+let url;
 
 var db;
 var 아아아아아아아아ㅏㅇ;
@@ -18,6 +24,8 @@ MongoClient.connect('mongodb+srv://xogus100:cjstk100@cluster0.tdazlii.mongodb.ne
     if(에러) return console.log(에러);
     db = client.db('posting');
     console.log(`db정상실행`);
+    console.log(process.env.AWS_ACCESS_KEY_ID)
+    console.log(process.env.AWS_SECRET_ACCESS_KEY)
 
     /* db.collection('post').insertOne({이름 : 'Taylor', 나이 : 24, _id : 99}, function(에러, 결과){
         console.log('저장완료');
@@ -27,7 +35,26 @@ MongoClient.connect('mongodb+srv://xogus100:cjstk100@cluster0.tdazlii.mongodb.ne
 
     
 });
-initRoutes(app);
+AWS.config.update({
+  apiVersion: "2010-12-01",
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: "ap-northeast-2"
+})
+
+const uploader = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "myreactawsbucket",
+    key(req, file, cb) {  
+      file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
+      console.log('오우오우오우'+file.originalname)
+      url = `https://myreactawsbucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
+      cb(null, `original/${path.basename(file.originalname)}`)
+
+  }
+  })
+})
 
 app.listen(8080, function() {
     console.log('listening on 8080')
@@ -41,17 +68,21 @@ app.get('/', function (요청, 응답) {
 
 
 
-  app.post('/add', function(요청, 응답){
+  app.post('/add', uploader.single("file"), function(요청, 응답){
     const title = 요청.body.title;
     const content = 요청.body.content;
+    console.log('url:' + url);
     console.log(title);
+    console.log(요청.body);
     응답.send('전송완료')
-    db.collection('post').insertOne( { 제목 : title, 내용 : content } , function(){
+  
+    db.collection('post').insertOne( { 제목 : title, 내용 : content, url : url } , function(){
       console.log('저장완료')
     });
   });
+  
   app.get('/list', function(요청, 응답){
-    db.collection('post').find().toArray(function(에러, 결과){
+    db.collection('post').find().sort({ _id: -1 }).toArray(function(에러, 결과){
       응답.send(결과);
     })
   })
