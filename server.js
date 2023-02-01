@@ -82,7 +82,7 @@ app.get('/', function (요청, 응답) {
   });
   
   app.get('/list', function(요청, 응답){
-    db.collection('post').find().toArray(function(에러, 결과){
+    db.collection('post').find().sort({ _id: -1 }).toArray(function(에러, 결과){
       응답.send(결과);
     })
   })
