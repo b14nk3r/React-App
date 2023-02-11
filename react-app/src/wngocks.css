@@ -1,0 +1,86 @@
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
+
+h1{ 
+    font-family: 'NanumSquareNeoHeavy';
+
+}
+
+nav{
+    font-family: 'NanumSquareNeoHeavy';
+}
+
+h2{
+    font-family: 'NanumSquareNeoHeavy';
+    margin-bottom: 0;
+}
+
+h3{font-family: 'NanumSquareNeoBold';}
+
+h4{font-family: 'NanumSquareNeoBold';}
+
+.card-body > h5 {
+    font-family: 'NanumSquareNeoHeavy';
+}
+
+
+
+
+
+p{font-family: 'NanumSquareNeo';
+    margin-bottom: 0;
+
+}
+
+.cs-box {
+
+  
+    /*width: 90%;*/
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.cs-box > div {
+  
+    background: #216bf3 url(./images/headset.png) no-repeat calc(100% - 40px) 50%;
+    
+    color: #fff;
+}
+
+.cs-box > div:last-child {
+    
+    background: #ed1b23 url(./images/phonecall.png) no-repeat calc(100% - 40px) 50%;
+    background-size:17%;
+    
+}
+
+.blue{  
+    padding: 40px 50px;
+    
+}
+
+.red{  
+    padding: 40px 50px;
+}
+
+.col{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.aa{
+   
+
+    position:absolute;
+    left: 50%;
+    top:50%;
+   transform: translate(-50%, -50%);
+
+ 
+   
+}
+
+.card-body{
+    height : 300px;
+    position: relative;
+    border: #000;
+}
