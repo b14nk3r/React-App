@@ -1,7 +1,9 @@
+
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+//import '../wngocks.css';
 
 //Import BrowserRouter
 import {
@@ -19,21 +21,26 @@ import Reference from '../Reference';
 import AdminPassword from '../AdminPassword';
 import ReferenceDetails from '../ReferenceDetails';
 
+
 const Header = () => {
     return (
         <header>
             <Router>
                 <Navbar fixed="top" bg="light" expand="lg">
-                    <Container>
-                        <Navbar.Brand href="#home">회사명</Navbar.Brand>
+                    <Container className='top_con'>
+                        <Navbar.Brand href="#home">
+                           회사명
+                        </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
+                            <Nav className="top me-auto d-flex justify-content-center">
+                                
                                 <Nav.Link as={Link} to="/">홈</Nav.Link>
                                 <Nav.Link href='#company'>회사 소개</Nav.Link>
                                 <Nav.Link href="#product">제품 소개</Nav.Link>
                                 <Nav.Link as={Link} to="/ReferenceWrite">자료실</Nav.Link>
                                 <Nav.Link as={Link} to="/Board">고객 지원</Nav.Link>
+                                
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
