@@ -13,8 +13,15 @@ import Axios from 'axios';
 import EditorComponent from "./EditorComponent"
 //import ReactQuill
 import ReactQuill from "react-quill";
+import { useLocation } from 'react-router-dom';
 
 function Reference() {
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
 
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');

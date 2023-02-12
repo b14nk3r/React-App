@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import Reference from './Reference'
 import Button from "react-bootstrap/Button";
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 const AdminPassword = () => {
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+    
     return (
         <Container className='pt-5 mt-5' style={{
             minHeight: `calc(100vh - 120px`,

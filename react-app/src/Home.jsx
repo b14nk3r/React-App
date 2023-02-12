@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 
@@ -8,18 +8,25 @@ import { Button, ButtonToolbar, Container } from 'react-bootstrap';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Routes, Route, Link } from "react-router-dom";
-import MainImage1 from "./images/fi7.jpg"
+import MainImage1 from "./images/main_img.jpg"
 import SubImage1 from "./images/01.jpg"
+import { useLocation } from "react-router-dom"
 
 
 const Home = () => {
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
     return (
         <>
             <Carousel>
                 <Carousel.Item id='home'>
 
                     <img
-                        className="d-block w-100 vh-100 object-fit-cover"
+                        className="d-block  vh-100 object-fit-cover "
                         src={MainImage1}
                         alt="First slide"
                     />
@@ -42,7 +49,7 @@ const Home = () => {
                                     <h1 className='d-flex justify-content-center'>
                                         LI-ION
                                     </h1>
-                                    <h4 className='d-flex justify-content-center mt-3 text-info '>
+                                    <h4 className='d-flex justify-content-center mt-3 po_co '>
                                         리튬이온배터리란?
                                     </h4>
                                 </div>
@@ -55,7 +62,7 @@ const Home = () => {
                                             <div className='d-flex justify-content-center '>
 
                                                 <h2 class="card-title ">리튬배터리</h2>
-                                                <h2 class="text-info card-title ms-2 ">구성</h2>
+                                                <h2 class="card-title ms-2 po_co ">구성</h2>
 
                                             </div>
                                             <a href="#" class="btn btn-primary ">자세히 보기</a>
@@ -69,7 +76,7 @@ const Home = () => {
                                         <div className='aa  '>
                                             <div className='d-flex justify-content-center'>
                                                 <h2 class="card-title  ">리튬배터리</h2>
-                                                <h2 class="text-info card-title ms-2">위험성</h2>
+                                                <h2 class="card-title ms-2 po_co">위험성</h2>
                                             </div>
 
                                             <a href="#" class="btn btn-primary ">자세히 보기</a>
@@ -82,7 +89,7 @@ const Home = () => {
                                         <div className='aa  '>
                                             <div className='d-flex justify-content-center'>
                                                 <h2 class="card-title">전기차배터리</h2>
-                                                <h2 class="text-info card-title ms-2">구성</h2>
+                                                <h2 class=" card-title ms-2 po_co">구성</h2>
                                             </div>
                                             <a href="#" class="btn btn-primary ">자세히 보기</a>
                                         </div>
@@ -93,7 +100,7 @@ const Home = () => {
                                     <div class="card-body justify-content-center  border">
                                         <div className='aa  '>
                                             <div className='d-flex justify-content-center'>
-                                                <h2 class="text-info card-title ms-2">Energy Storage System</h2>
+                                                <h2 class="card-title ms-2 po_co">Energy Storage System</h2>
                                             </div>
                                             <a href="#" class="btn btn-primary ">자세히 보기</a>
                                         </div>
@@ -109,7 +116,7 @@ const Home = () => {
                                 <h1 className='d-flex justify-content-center'>
                                     회사 소개
                                 </h1>
-                                <h4 className='d-flex justify-content-center mt-3 text-info '>
+                                <h4 className='d-flex justify-content-center mt-3 po_co'>
                                     회사 소개가 들어가는 곳 입니다.
                                 </h4>
                             </div>
@@ -134,7 +141,7 @@ const Home = () => {
                                 <h1 className='d-flex justify-content-center'>
                                     제품 소개
                                 </h1>
-                                <h4 className='d-flex justify-content-center mt-3 text-info '>
+                                <h4 className='d-flex justify-content-center mt-3 po_co '>
                                     제품 이름이 들어가는 곳 입니다.
                                 </h4>
                             </div>
@@ -159,7 +166,7 @@ const Home = () => {
                         <h1 className='d-flex justify-content-center'>
                             무엇을 도와드릴까요?
                         </h1>
-                        <h4 className='d-flex justify-content-center mt-3 text-info '>
+                        <h4 className='d-flex justify-content-center mt-3 po_co '>
                             누구나 안전하게 편리한 생활을 누릴 수 있도록 여러분의 안전수호기업이 되겠습니다.
                         </h4>
                     </div>
@@ -177,6 +184,7 @@ const Home = () => {
 
                     </div>
                 </div>
+                
                 <div>
                     <div className='cardd d-flex mt-5 mb-5 justify-content-center '>
                         <div class="card-body m-3 " style={{ height: '10rem', width: '11rem' }}>

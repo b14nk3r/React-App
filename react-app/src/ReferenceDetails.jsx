@@ -1,16 +1,21 @@
-import React from 'react'
 import { Button, Container } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import ReactHtmlParser from 'react-html-parser'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 //footer 컴포넌트 따로만들기
 //목록으로 버튼만들기
 //부트스트랩 클래스네임 보면서 멋있게 바꾸기
 //가능하다면 게시판 상세 axios말고 props로 가지고오기 
 //사진같은거 애니메이션 추가
 const Board = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
   const [viewContent, setViewContent] = useState([]);
   const { no } = useParams();
   console.log("가져온파라미터입니다:"+no);
