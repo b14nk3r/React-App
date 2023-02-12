@@ -7,12 +7,19 @@ import { Routes, Route, Link } from "react-router-dom";
 
 const AdminPassword = () => {
     return (
-        <Container>
-            <div class="form-group">
-                <label for="exampleInputPassword1" class="form-label mt-4">관리자 비밀번호</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호를 입력하세요." />
+        <Container className='pt-5 mt-5' style={{
+            minHeight: `calc(100vh - 120px`,
+        }}>
+            <div className='m-lg-5 text-center'>
+                <h1><b>자료실</b></h1>
             </div>
-            <Link to="/Reference"><Button>관리자 로그인</Button></Link>
+            <div className="form-group">
+                <label for="exampleInputPassword1" className="form-label mt-4">관리자 비밀번호</label>
+                <input type="password" className="form-control mb-3" id="exampleInputPassword1" placeholder="비밀번호를 입력하세요." />
+            </div>
+            <div className='d-flex justify-content-center' style={{paddingTop:"50px"}}>
+                <Link to="/Reference"><Button variant='dark' size='lg'>관리자 로그인</Button></Link>
+            </div>
 
             <Routes>
                 <Route path="/Reference" element={<Reference />}></Route>

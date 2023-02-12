@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Container } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import Axios from 'axios';
@@ -40,18 +39,18 @@ const Board = () => {
                     <span>작성자&nbsp;</span>
                     <span>관리자</span>
                     <span className='vr mx-2'></span>
-                    <span>작성일</span>
+                    <span>작성일&nbsp;</span>
                     <span>{viewContent.날짜}&nbsp;</span>
                 </div>
             </div>
             <div className='d-flex justify-content-end mt-2' style={{width: "100%"}}>
-                <Button variant="outline-dark" size='sm'>첨부파일</Button>
+                <Button variant="outline-dark" size='sm' onClick={()=>{window.open(viewContent.url)}}>첨부파일</Button>
             </div>
-            <div>{ReactHtmlParser(viewContent.내용)}</div>
+            <div className='contentImg'>{ReactHtmlParser(viewContent.내용)}</div>
         </div>
 
         <div className='d-flex justify-content-center my-3'>
-            <Button variant="dark" size='lg'>목록으로</Button>
+          <Link to="/ReferenceWrite"><Button variant="dark" size='lg'>목록으로</Button></Link>
         </div>
     </Container>
     )
