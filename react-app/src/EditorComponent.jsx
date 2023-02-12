@@ -2,7 +2,7 @@ import { useRef, useState, useMemo } from "react";
 
 //이렇게 라이브러리를 불러와서 사용하면 됩니다
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.snow.css"
 
 import Axios from 'axios';
 
@@ -88,7 +88,7 @@ const EditorComponent = ({content, setContent}) => {
 
     return (
         <>
-            <ReactQuill
+            <ReactQuill style={{ height: '600px', position: 'static' }}
                 ref={quillRef}
                 theme="snow"
                 placeholder="플레이스 홀더"

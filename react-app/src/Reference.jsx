@@ -15,7 +15,7 @@ import EditorComponent from "./EditorComponent"
 import ReactQuill from "react-quill";
 
 function Reference() {
-    
+
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -38,82 +38,71 @@ function Reference() {
 
     const [viewContent, setViewContent] = useState([]);
 
-    useEffect(()=>{
-        Axios.get('http://localhost:8080/list').then((response)=>{
-          setViewContent(response.data);
+    useEffect(() => {
+        Axios.get('http://localhost:8080/list').then((response) => {
+            setViewContent(response.data);
         })
-      },[viewContent])
-    //이것이주석이야sdasdasdasdasd
+    }, [viewContent])
 
-    function onSubmit(e){
+    function onSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("file", file);
-        formData.append("name",name);
-        formData.append("title", title);
-        formData.append("content", content);
-        console.log(formData);
-        console.log(file);
-        Axios({
-            method: "POST",
-            url: 'http://localhost:8080/add', 
-            data: formData,
-            headers:  {
-                "Content-Type": "multipart/form-data; charset=utf-8;",
-                "Access-Control-Allow-Origin": "*",
-              },
-          });
-          
-    
+        //정규식으로 공백 여러개 제목도 알림 띄우기
+        if(title.length === 0){
+            alert("제목을 입력해주세요.");
+        } if(content == "") {
+            alert("내용을 입력해주세요.");
+        } else {
+            formData.append("file", file);
+            formData.append("name", name);
+            formData.append("title", title);
+            formData.append("content", content);
+            console.log(formData);
+            console.log(file);
+            Axios({
+                method: "POST",
+                url: 'http://localhost:8080/add',
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data; charset=utf-8;",
+                    "Access-Control-Allow-Origin": "*",
+                },
+            });
+        }
+
+
         for (let key of formData.keys()) {
             console.log(key, ":", formData.get(key));
         }
         for (let value of formData.values()) {
             console.log(value);
-      }
-        
+        }
+
     }
 
     return (
-        <Container>
-            <div class="form-group">
-                <h1>자료실</h1>
-                <div>
-                    {viewContent.map(element =>
-                        <div>
-                            <h2>{element.제목}</h2>
-                            <div>
-                                {ReactHtmlParser(element.내용)}
-                            </div>
-                            <img></img>
-                        </div>)}
-                </div>
+        <Container className='pt-5 mt-5' style={{
+            minHeight: `calc(100vh - 120px)`,
+        }}>
+            <div className='m-lg-5 text-center'>
+                <h1><b>자료실</b></h1>
             </div>
-            
-            <form  accept-charset="UTF-8" onSubmit={onSubmit} >
+
+            <form accept-charset="UTF-8" onSubmit={onSubmit} >
                 <div>
-                    <div class="form-group">
-                        <label for="exampleInputContent1" class="form-label mt-4">제목</label>
+                    <div class="form-group mb-3">
                         <input class="form-control" type="text"
                             placeholder="제목을 입력하세요."
                             onChange={onChangeTitle}
                             name='title'
                         />
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputWriter1" class="form-label mt-4">이름</label>
-                        <input class="form-control" type="text"
-                            placeholder="이름을 입력하세요."
-                            onChange={onChangeName}
-                            name='name'
-                        />
-                    </div>
                     <div>
-                        <input class="form-control" onChange={onChangeFile} enctype="multipart/form-data" type="file" name="file" />
+                        <input class="form-control mb-3" onChange={onChangeFile} enctype="multipart/form-data" type="file" name="file" />
                     </div>
                     <EditorComponent content={content} setContent={setContent} />
 
-                   {/*} <div class="form-group">
+                    {/*} <div class="form-group">
 
                         <label for="exampleInputContent1" class="form-label mt-4">내용</label>
                         <input class="form-control" type="text"
@@ -123,10 +112,14 @@ function Reference() {
                         />
                     </div>*/}
                 </div>
-                <Button
-                    className="submit-button"
-                    type="submit"
-                >입력</Button>
+                <div className='d-flex justify-content-center my-5 py-5'>
+                    <Button
+                        variant='dark'
+                        size='lg'
+                        className="submit-button"
+                        type="submit"
+                    >글쓰기</Button>
+                </div>
             </form>
         </Container>
     )

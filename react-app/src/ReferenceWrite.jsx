@@ -12,8 +12,10 @@ import AdminPassword from './AdminPassword';
 
 import Posts from './Posts'
 import Pagination from 'react-js-pagination'
+import { Container } from 'react-bootstrap';
+import './css/pagination.css'
 
-
+//모바일 반응형 테이블로 수정
 const ReferenceWrite = () => {
 
   const [viewContent, setViewContent] = useState([]);
@@ -40,11 +42,16 @@ const ReferenceWrite = () => {
   }, [viewContent])
 
   return (
-    <div>
-      <Table striped bordered hover>
+    <Container className='pt-5 mt-5' style={{
+      minHeight: `calc(100vh - 120px`,
+    }}>
+      <div className='m-lg-5 text-center'>
+        <h1><b>자료실</b></h1>
+      </div>
+      <Link className='float-end' to="/AdminPassword"><Button variant="dark">글쓰기</Button></Link>
+      <Table striped hover>
         <thead>
           <tr>
-            <th>선택</th>
             <th>번호</th>
             <th>제목</th>
             <th>작성자</th>
@@ -53,25 +60,24 @@ const ReferenceWrite = () => {
         </thead>
         <tbody>
           <Posts info={postsData(viewContent)} />
-          <Pagination
-            activePage={page}
-            itemsCountPerPage={limit}
-            totalItemsCount={viewContent.length}
-            pageRangeDisplayed={5}
-            prevPageText="‹"
-            nextPageText="›"
-            onChange={handlePageChange}
-          />
         </tbody>
       </Table>
-      <Link to="/AdminPassword"><Button>글쓰기</Button></Link>
-      <Button variant="secondary">수정하기</Button>
-      <Button variant="danger">삭제하기</Button>
+      <div style={{width:"100%"}}>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={limit}
+          totalItemsCount={viewContent.length}
+          pageRangeDisplayed={5}
+          prevPageText="‹"
+          nextPageText="›"
+          onChange={handlePageChange}
+        />
+      </div>
 
       <Routes>
         <Route path="/AdminPassword" element={<AdminPassword />}></Route>
       </Routes>
-    </div>
+    </Container>
 
   )
 }

@@ -9,8 +9,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { StaticImage } from "gatsby-plugin-image";
 //Import BrowserRouter
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Board from "./Board";
-
 import Company from "./Company";
 import Product from "./Product";
 
