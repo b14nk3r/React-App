@@ -12,7 +12,7 @@ import {
   Outlet
 } from "react-router-dom";
 
-const Company = () => {
+const LiionBattery = () => {
 
   const { pathname } = useLocation();
 
@@ -39,21 +39,15 @@ const Company = () => {
 
       <div id="sub-visual" class="bg-02">
         <div class="sub_tit">
-          <h1>회사소개</h1>
+          <h1>Li-ION</h1>
           <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
         </div>
         <ul class="snb">
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company">리튬배터리 구성</Link></li>
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/LiionRisks">리튬배터리 위험성</Link></li>
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/ElectricCarBattery">전기차배터리 구성</Link></li>
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/Ess">Energy Storage System</Link></li>
+          <li><Link to="/LiionBattery">리튬배터리 구성</Link></li>
+          <li><Link to="/LiionBattery/LiionRisks">리튬배터리 위험성</Link></li>
+          <li><Link to="/LiionBattery/ElectricCarBattery">전기차배터리 구성</Link></li>
+          <li><Link to="/LiionBattery/Ess">Energy Storage System</Link></li>
         </ul>
-      </div>
-
-      <div class="row relative container2">
-        
-          <p class="sub_title">인사말</p>
-        
       </div>
 
       <Container class="sub-container">
@@ -73,4 +67,4 @@ const Company = () => {
   )
 }
 
-export default Company
+export default LiionBattery

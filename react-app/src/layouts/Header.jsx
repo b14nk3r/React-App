@@ -26,6 +26,7 @@ import LiionComposition from '../liionComponent/LiionComposition';
 import LiionRisks from '../liionComponent/LiionRisks';
 import ElectricCarBattery from '../liionComponent/ElectricCarBattery';
 import Ess from '../liionComponent/Ess';
+import LiionBattery from '../LiionBattery';
 
 const Header = () => {
 
@@ -48,19 +49,25 @@ const Header = () => {
                 
                 <Navbar fixed="top" bg="light" expand="lg" className={navbar ? 'bg-white border-bottom' : 'bg-transparent'} > 
                     <Container className='top_con '>
-                        <Navbar.Brand href="#home">
+
+                    <Navbar.Brand href="#home">
                            <img className='me-5' src={Logo} style={{ height: '50px', width: '60px ' }}></img>
                         </Navbar.Brand>
+
+                       
                      
                         <Navbar.Toggle aria-controls="basic-navbar-nav " />
                         <Navbar.Collapse id="basic-navbar-nav ">
 
                             <Container className="d-flex justify-content-center">
                                 <Nav className="d-flex" >
+
+                        
                                     <Nav.Link className={navbar ? 'text-black' : 'text-white'} as={Link} to="/">홈</Nav.Link>
-                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/Company">회사 소개</Nav.Link>
-                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/Product">제품 소개</Nav.Link>
-                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/ReferenceWrite">고객 지원</Nav.Link>
+                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/LiionBattery">Li-Ion</Nav.Link>
+                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/Company">회사소개</Nav.Link>
+                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/Product">제품소개</Nav.Link>
+                                    <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/ReferenceWrite">고객지원</Nav.Link>
                                 </Nav>
                             </Container>
 
@@ -71,11 +78,13 @@ const Header = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/ReferenceWrite" element={<ReferenceWrite />} />
-                    <Route path="/Company" element={<Company />}>
-                        <Route path='/Company/' element={<LiionComposition />} />
-                        <Route path='/Company/LiionRisks' element={<LiionRisks />} />
-                        <Route path='/Company/ElectricCarBattery' element={<ElectricCarBattery />} />
-                        <Route path='/Company/Ess' element={<Ess />} />
+                    <Route path="/Company" element={<Company />} />
+                    
+                    <Route path="/LiionBattery" element={<LiionBattery />} >
+                        <Route path='/LiionBattery/' element={<LiionComposition />} />
+                        <Route path='/LiionBattery/LiionRisks' element={<LiionRisks />} />
+                        <Route path='/LiionBattery/ElectricCarBattery' element={<ElectricCarBattery />} />
+                        <Route path='/LiionBattery/Ess' element={<Ess />} />
                     </Route>
                     <Route path="/Product" element={<Product />} />
                     <Route path="/Reference" element={<Reference />} />
