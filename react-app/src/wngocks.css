@@ -1,87 +1,136 @@
 @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
 
-h1{ 
+h1 {
     font-family: 'NanumSquareNeoHeavy';
 
 }
 
-nav{
+nav {
     font-family: 'NanumSquareNeoBold';
 }
 
-.nav-link:hover{color: #4caf50 !important;}
+.nav-link:hover {
+    color: #4caf50 !important;
+}
 
-h2{
+h2 {
     font-family: 'NanumSquareNeoHeavy';
     margin-bottom: 0;
 }
 
-h3{font-family: 'NanumSquareNeoBold';}
+h3 {
+    font-family: 'NanumSquareNeoBold';
+}
 
-h4{font-family: 'NanumSquareNeoBold';}
+h4 {
+    font-family: 'NanumSquareNeoBold';
+}
 
-.card-body > h5 {
+h5 {
+    font-family: 'NanumSquareNeo';
+}
+
+.card-body>h5 {
     font-family: 'NanumSquareNeoHeavy';
 }
 
-h6{font-family: 'NanumSquareNeoBold';}
+h6 {
+    font-family: 'NanumSquareNeoBold';
+}
 
-
-p{font-family: 'NanumSquareNeo';
+p {
+    font-family: 'NanumSquareNeo';
     margin-bottom: 0;
 
 }
 
 .cs-box {
 
-  
+
     /*width: 90%;*/
     margin: 0 auto;
     margin-top: 50px;
 }
 
-.cs-box > div {
-  
-    background: #216bf3 url(./images/headset.png) no-repeat calc(100% - 40px) 50%;
-    
-    color: #fff;
+.ccs-box {
+    width: 100%;
+
 }
 
-.cs-box > div:last-child {
-    
-    background: #ed1b23 url(./images/phonecall.png) no-repeat calc(100% - 40px) 50%;
-    background-size:17%;
-    
+.cs-box>.file {
+
+    background: url(./images/file.png) no-repeat calc(32% - 40px) 50%;
+
+    color: #000;
+    background-size: 13%;
+
 }
 
-.blue{  
+.cs-box>.youtube {
+
+    background: url(./images/youtube.png) no-repeat calc(32% - 40px) 50%;
+    color: #000;
+    background-size: 13%;
+
+}
+
+.cs-box>.call {
+
+    background: url(./images/call.png) no-repeat calc(32% - 40px) 50%;
+    color: #000;
+    background-size: 13%;
+
+}
+
+.cs-box>.map {
+
+    background: url(./images/map.png) no-repeat calc(32% - 40px) 50%;
+    color: #000;
+    background-size: 13%;
+
+}
+
+
+
+.file,
+.map,
+.youtube,
+.call {
     padding: 40px 50px;
-    
+    text-align: end;
+
+
 }
 
-.red{  
-    padding: 40px 50px;
+.file>h2,
+.map>h2,
+.youtube>h2,
+.call>h2 {
+    font-family: 'NanumSquareNeoBold';
+
 }
 
-.col{
+
+
+.col {
     padding-left: 0;
     padding-right: 0;
 }
 
-.aa{
-   
+.aa {
 
-    position:absolute;
+
+    position: absolute;
     left: 50%;
-    top:50%;
-   transform: translate(-50%, -50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
 
- 
-   
+
+
 }
 
-.card-body{
-    height : 300px;
+.card-body {
+    height: 300px;
     position: relative;
     border: #000;
 }
@@ -92,17 +141,17 @@ p{font-family: 'NanumSquareNeo';
 }
 
 .bg-02 {
-    background:  url(./images/top.jpg) no-repeat 50% 50%;
+    background: url(./images/top.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 
 .bg-03 {
-    background:  url(./images/top3.jpg) no-repeat 50% 50%;
+    background: url(./images/top3.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 
 .bg-04 {
-    background:  url(./images/top4.jpg) no-repeat 50% 50%;
+    background: url(./images/top4.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 
@@ -119,13 +168,14 @@ p{font-family: 'NanumSquareNeo';
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0,0,0,.8);
-    color: rgba(255,255,255,.8);
+    background: rgba(0, 0, 0, .8);
+    color: rgba(255, 255, 255, .8);
     text-align: center;
     margin-bottom: 0;
 }
 
-.ul, li{
+.ul,
+li {
     list-style: none;
     word-break: keep-all;
     line-height: 1;
@@ -138,6 +188,7 @@ p{font-family: 'NanumSquareNeo';
 ul li {
     list-style-type: none;
 }
+
 .snb li a {
     display: inline-block;
     padding: 0 20px;
@@ -179,23 +230,23 @@ ul li {
     font-family: "NanumSquareNeoBold";
 }
 
-.foo_cont{
+.foo_cont {
     background-color: #4caf50;
 }
 
 
 
-.fo{
+.fo {
     color: #fff;
     font-size: 12px;
 }
 
-.fo1{
+.fo1 {
     font-weight: bold;
 }
 
-.po_co{
-    color:#4caf50;
+.po_co {
+    color: #4caf50;
 }
 
 
@@ -204,7 +255,7 @@ ul li {
 .tb {
     border-top: 2px solid;
     border-bottom: 2px solid;
-    
+
 }
 
 
@@ -214,17 +265,17 @@ ul li {
     background: #F5F5F5;
     font-weight: 400;
     text-align: center;
-    
+
 }
 
 .tb tr>* {
-    padding: 1em 2em;
+    padding: 2em 0;
     border: 1px solid #E6E6E6;
     border-top: 0;
 }
 
-.point{
- 
+.point {
+
     color: #4caf50;
     font-family: 'NanumSquareNeoHeavy';
 
@@ -232,65 +283,142 @@ ul li {
 
 table {
     width: 100%;
-  }
+    table-layout: fixed;
+    word-break: break-all;
+}
 
-  th{
+th {
     font-family: 'NanumSquareNeoHeavy';
-  }
+}
 
-  tr{
+tr {
     font-family: 'NanumSquareNeoBold';
-  }
+}
 
-  .sub2_title{
+.sub2_title {
     font-size: 30px;
     text-align: center;
     font-family: 'NanumSquareNeoHeavy';
 
-  }
+}
 
-  .sub3_title{
+.sub3_title {
     text-align: center;
 
-  }
+}
 
-  
-  .sub3_title > .su > h4{
+
+.sub3_title>.su>h4 {
     margin-bottom: 20px;
     font-size: large;
     font-family: 'NanumSquareNeoHeavy';
-    
-  }
 
-
- .se{
-    display: block; 
-    margin: 0px auto;
- }
-
- .con_12{
-   
- }
-
- .g{
-    line-height:1.6;
 }
-    
- 
 
- .img12{
+
+.se {
+    display: block;
+    margin: 0px auto;
+}
+
+
+
+.g {
+    line-height: 2.5;
+    word-break: keep-all;
+}
+
+.img12 {
     width: 100%;
     height: 100%;
     padding-left: 10%;
     padding-right: 10%;
- }
+}
 
- .aw{
+
+.img13 {
+    width: 100%;
+    height: 100%;
+
+}
+
+.img12l {
+    width: 100%;
+    height: 100%;
+    padding-right: 10%;
+}
+
+.img12r {
+    width: 100%;
+    height: 100%;
+    padding-left: 10%;
+}
+
+.images2 {
+    margin: auto;
+    display: block;
+}
+
+.snb>li>a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.snb>li>a:hover {
+    color: #4caf50;
+}
+
+
+.aw {
     justify-content: center;
 }
- 
 
-.add{
+
+.add {
     margin: 100px;
 }
 
+a.download {
+    font-family: 'NanumSquareNeo';
+}
+
+a.download:link {
+    text-decoration: none
+}
+
+a.download:visited {
+    text-decoration: none
+}
+
+a.download:hover {
+    text-decoration: underline
+}
+
+a.download:active {
+    text-decoration: none
+}
+
+a.download:link svg {
+    color: black;
+}
+
+a.download:visited svg {
+    color: black;
+}
+
+a.download:hover svg {
+    color: white;
+}
+
+a.download:active svg {
+    color: black;
+}
+
+#home {
+    background-image: url("./images/main_img.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}

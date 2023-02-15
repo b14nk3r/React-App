@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 
 //import CKeditor
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -13,14 +14,19 @@ import Axios from 'axios';
 import EditorComponent from "./EditorComponent"
 //import ReactQuill
 import ReactQuill from "react-quill";
-import { useLocation } from 'react-router-dom';
+
+//500MB 제한
+const FILE_SIZE_MAX_LIMIT = 500 * 1024 * 1024;
+
+
 
 function Reference() {
-
+    const navigate = useNavigate();
+ 
     const { pathname } = useLocation();
 
     useEffect(() => {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 425);
     }, [pathname]);
 
     const [name, setName] = useState('');
@@ -45,37 +51,63 @@ function Reference() {
 
     const [viewContent, setViewContent] = useState([]);
 
-    useEffect(() => {
-        Axios.get('http://localhost:8080/list').then((response) => {
-            setViewContent(response.data);
-        })
-    }, [viewContent])
+    function trim(stringToTrim) {
+        return stringToTrim.replace(/^\s+|\s+$/g,"");
+    }
+
+    let check_title = title;
+
+	const trimmed_title = trim(check_title);
+	const trimmed_title_length = trimmed_title.length;
 
     function onSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        //정규식으로 공백 여러개 제목도 알림 띄우기
-        if(title.length === 0){
+        if (trimmed_title_length === 0) {
             alert("제목을 입력해주세요.");
-        } if(content == "") {
-            alert("내용을 입력해주세요.");
-        } else {
-            formData.append("file", file);
-            formData.append("name", name);
-            formData.append("title", title);
-            formData.append("content", content);
-            console.log(formData);
-            console.log(file);
-            Axios({
-                method: "POST",
-                url: 'http://localhost:8080/add',
-                data: formData,
-                headers: {
-                    "Content-Type": "multipart/form-data; charset=utf-8;",
-                    "Access-Control-Allow-Origin": "*",
-                },
-            });
+
+            return false;
         }
+        if (content == "") {
+            alert("내용을 입력해주세요.");
+
+            return false;
+        }
+        
+        /*if (file.size !== undefined) {
+            if (file.size > FILE_SIZE_MAX_LIMIT) {
+                alert("500MB 이하로 업로드 해주세요.")
+    
+                return false;
+            }
+        }*/
+        if (file !== undefined) {
+            if (file.size > FILE_SIZE_MAX_LIMIT) {
+                alert("500MB 이하로 업로드 해주세요.")
+    
+                return false;
+            }
+            formData.append("file", file);
+            formData.append("fileSize", file.size);
+        }
+        formData.append("name", name);
+        formData.append("title", title);
+        formData.append("content", content);
+        console.log(formData);
+        console.log(file);
+        //console.log("파일 용량: " + file.size);
+        Axios({
+            method: "POST",
+            url: 'http://localhost:8080/add',
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data; charset=utf-8;",
+                "Access-Control-Allow-Origin": "*",
+            },
+        }).then(function (response) {
+            console.log(response);
+            navigate('/ReferenceWrite');
+        })
 
 
         for (let key of formData.keys()) {
@@ -88,28 +120,37 @@ function Reference() {
     }
 
     return (
-        <Container className='pt-5 mt-5' style={{
-            minHeight: `calc(100vh - 120px)`,
-        }}>
-            <div className='m-lg-5 text-center'>
-                <h1><b>자료실</b></h1>
+        <div>
+            <div id="sub-visual" class="bg-04">
+                <div class="sub_tit">
+                    <h1>고객지원</h1>
+                    <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
+                </div>
             </div>
-
-            <form accept-charset="UTF-8" onSubmit={onSubmit} >
-                <div>
-                    <div class="form-group mb-3">
-                        <input class="form-control" type="text"
-                            placeholder="제목을 입력하세요."
-                            onChange={onChangeTitle}
-                            name='title'
-                        />
+            <Container style={{
+                minHeight: `calc(100vh - 120px)`,
+            }}>
+                <div class="row relative container2">
+                    <div class="col-md-12">
+                        <p class="sub_title">자료실</p>
                     </div>
+                </div>
+
+                <form accept-charset="UTF-8" onSubmit={onSubmit} >
                     <div>
-                        <input class="form-control mb-3" onChange={onChangeFile} enctype="multipart/form-data" type="file" name="file" />
-                    </div>
-                    <EditorComponent content={content} setContent={setContent} />
+                        <div class="form-group mb-3">
+                            <input class="form-control" type="text"
+                                placeholder="제목을 입력하세요."
+                                onChange={onChangeTitle}
+                                name='title'
+                            />
+                        </div>
+                        <div>
+                            <input class="form-control mb-3" onChange={onChangeFile} enctype="multipart/form-data" type="file" name="file" />
+                        </div>
+                        <EditorComponent content={content} setContent={setContent} />
 
-                    {/*} <div class="form-group">
+                        {/*} <div class="form-group">
 
                         <label for="exampleInputContent1" class="form-label mt-4">내용</label>
                         <input class="form-control" type="text"
@@ -118,17 +159,18 @@ function Reference() {
                             name='content'
                         />
                     </div>*/}
-                </div>
-                <div className='d-flex justify-content-center my-5 py-5'>
-                    <Button
-                        variant='dark'
-                        size='lg'
-                        className="submit-button"
-                        type="submit"
-                    >글쓰기</Button>
-                </div>
-            </form>
-        </Container>
+                    </div>
+                    <div className='d-flex justify-content-center my-5 py-5'>
+                        <Button
+                            variant='dark'
+                            size='lg'
+                            className="submit-button"
+                            type="submit"
+                        >글 쓰기</Button>
+                    </div>
+                </form>
+            </Container>
+        </div>
     )
 }
 

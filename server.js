@@ -1,10 +1,12 @@
 const express = require('express');
 const AWS = require('aws-sdk');
 const multer = require('multer');
-const multerS3 = require('multer-s3');
+const multerS3 = require('multer-s3-transform');
+const multerS33 = require('multer-s3');
 const app = express();
 var fs = require('fs');
 const path = require('path');   
+const sharp = require('sharp');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
@@ -15,7 +17,8 @@ require("dotenv").config();
 var ang123;
 let url;
 let imgurl;
-
+let inputFile;
+let outputFile;
 
 var db;
 var 아아아아아아아아ㅏㅇ;
@@ -46,13 +49,16 @@ AWS.config.update({
 })
 
 const uploader = multer({
-  storage: multerS3({
+  storage: multerS33({
     s3: s3,
-    bucket: "myreactawsbucket",
+    bucket: "mymarubucket",
+    contentType: multerS33.AUTO_CONTENT_TYPE,
+    shouldTransform: true,
+      
     key(req, file, cb) {  
       file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
       console.log('오우오우오우'+file.originalname)
-      url = `https://myreactawsbucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
+      url = `https://mymarubucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
       cb(null, `original/${path.basename(file.originalname)}`)
 
   }
@@ -60,18 +66,57 @@ const uploader = multer({
 })
 
 const upload = multer({
+  
   storage: multerS3({
     s3: s3,
-    bucket: "myreactawsbucket",
+    bucket: "mymarubucket",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    shouldTransform: true,
+    transforms: [
+      {
+        id: "resized",
     key(req, file, cb) {  
+      
       file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
       console.log('오우오우오우'+file.originalname)
-      imgurl = `https://myreactawsbucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
+      imgurl = `https://mymarubucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
       cb(null, `original/${path.basename(file.originalname)}`)
-
-  }
+    },
+    transform: function (req, file, cb) {
+      cb(null, sharp().resize({width:400}));
+    },
+  },
+],
+acl: "public-read-write",
   })
 });
+
+const ImageUpload = multer({
+  storage: multerS3({
+    s3,
+    bucket: "mymarubucket",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    shouldTransform: true,
+    transforms: [
+      {
+        id: "resized",
+        key: function (req, file, cb) {
+          file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
+    
+      
+      console.log('오우오우오우'+file.originalname)
+      imgurl = `https://mymarubucket.s3.ap-northeast-2.amazonaws.com/original/${encodeURIComponent(path.basename(file.originalname))}`
+      cb(null, `original/${path.basename(file.originalname)}`)
+        },
+        transform: function (req, file, cb) {
+          cb(null, sharp().resize({width:400}));
+        },
+      },
+    ],
+    acl: "public-read-write",
+  }),
+});
+
 
 
 app.listen(8080, function() {
@@ -81,12 +126,11 @@ app.listen(8080, function() {
 app.post('/img', upload.single('img'), (req, res) => {
   // 해당 라우터가 정상적으로 작동하면 public/uploads에 이미지가 업로드된다.
   // 업로드된 이미지의 URL 경로를 프론트엔드로 반환한다.
+  
   console.log('전달받은 파일', req.file);
   console.log('저장된 파일의 이름', req.file.filename);
 
   // 파일이 저장된 경로를 클라이언트에게 반환해준다.
-  const IMG_URL = `http://localhost:4050/uploads/${req.file.filename}`;
-  console.log(IMG_URL);
   res.json({ url: imgurl });
 });
 
@@ -108,6 +152,7 @@ app.get('/details/:no', function(요청, 응답){
   app.post('/add', uploader.single("file"), function(요청, 응답){
     const title = 요청.body.title;
     const content = 요청.body.content;
+    const fileSize = 요청.body.fileSize;
     var today = new Date();
 
     var year = today.getFullYear();
@@ -122,7 +167,7 @@ app.get('/details/:no', function(요청, 응답){
     console.log(dateString);
     응답.send('전송완료')
   
-    db.collection('post').insertOne( { 제목 : title, 내용 : content, url : url, 날짜: dateString } , function(){
+    db.collection('post').insertOne( { 제목 : title, 내용 : content, url : url, fileSize : fileSize, 날짜: dateString } , function(){
       console.log('저장완료')
     });
   });

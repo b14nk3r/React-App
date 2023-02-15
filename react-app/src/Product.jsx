@@ -4,12 +4,10 @@ import SubImage6 from "./images/top.png"
 import SubImage7 from "./images/w1.png"
 import SubImage8 from "./images/test.png"
 import { useLocation } from "react-router-dom"
-
-
-
+import Table from "react-bootstrap/Table";
 
 const Company = () => {
-
+  console.log("렌더링");
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -63,61 +61,58 @@ const Company = () => {
 
       <img className='className="d-block w-100 vh-200 object-fit-cover"' src={SubImage6} style={{ height: '100px', width: '2000px' }}></img>
 
+          <Table className="tb text-center">
+            <tbody>
+              <tr className="tr-bt">
+                <th>구분</th>
+                <th>침윤제</th>
+                <th>물</th>
+                <th>분말형</th>
+                <th>가스계</th>
+              </tr>
+            </tbody>
 
-      <table class="tb text-center">
-    <tbody>
-        <tr class="tr-bt">
-            <th>구분</th>
-            <th>침윤제</th>
-            <th>물</th>
-            <th>분말형</th>
-            <th>가스계</th>
-        </tr>
-        </tbody>
-        
-        <tbody>
-        <tr class="tr-bt">
-            <th>소화방식</th>
-            <td class="point">질식,냉각</td>
-            <td>질식,냉각</td>
-            <td>부촉매 질식</td>
-            <td>부촉매 부족</td>
-        </tr>
-        </tbody>
+            <tbody>
+              <tr className="tr-bt">
+                <th>소화방식</th>
+                <td class="point">질식,냉각</td>
+                <td>질식,냉각</td>
+                <td>부촉매 질식</td>
+                <td>부촉매 부족</td>
+              </tr>
+            </tbody>
 
-<tbody>
-        <tr class="tr-bt">
-            <th>소화효과</th>
-            <td class="point">우수</td>
-            <td>미흡</td>
-            <td>미흡</td>
-            <td>미흡</td>
-        </tr>
-        </tbody>
+            <tbody>
+              <tr className="tr-bt">
+                <th>소화효과</th>
+                <td className="point">우수</td>
+                <td>미흡</td>
+                <td>미흡</td>
+                <td>미흡</td>
+              </tr>
+            </tbody>
 
-        <tbody>
-        <tr class="tr-bt">
-            <th>표면장력</th>
-            <td class="point">우수 [15dyn/m]</td>
-            <td>보통 [70dyn/m]</td>
-            <td>없음</td>
-            <td>없음</td>
-        </tr>
-        </tbody>
+            <tbody>
+              <tr className="tr-bt">
+                <th>표면장력</th>
+                <td className="point">우수 [15dyn/m]</td>
+                <td>보통 [70dyn/m]</td>
+                <td>없음</td>
+                <td>없음</td>
+              </tr>
+            </tbody>
 
-        <tbody>
-        <tr class="tr-bt">
-            <th>리튬이온 배터리<br></br> 적응성</th>
-            <td class="point">우수</td>
-            <td>보통</td>
-            <td>미흡</td>
-            <td>미흡</td>
-        </tr>
-    </tbody>
-    
-</table>
+            <tbody>
+              <tr className="tr-bt">
+                <th>리튬이온 배터리<br></br> 적응성</th>
+                <td className="point">우수</td>
+                <td>보통</td>
+                <td>미흡</td>
+                <td>미흡</td>
+              </tr>
+            </tbody>
 
-
+          </Table>
 
 
 

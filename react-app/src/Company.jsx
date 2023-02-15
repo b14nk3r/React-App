@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom"
 
 import LiionComposition from './liionComponent/LiionComposition'
 
+//이 곳 li a태그 호버 안됨
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -48,6 +50,12 @@ const Company = () => {
           <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/ElectricCarBattery">전기차배터리 구성</Link></li>
           <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/Ess">Energy Storage System</Link></li>
         </ul>
+      </div>
+
+      <div class="row relative container2">
+        
+          <p class="sub_title">인사말</p>
+        
       </div>
 
       <Container class="sub-container">

@@ -18,6 +18,7 @@ import { useLocation } from "react-router-dom";
 
 //모바일 반응형 테이블로 수정
 const ReferenceWrite = () => {
+  console.log("렌더링");
 
   const [viewContent, setViewContent] = useState([]);
 
@@ -26,7 +27,7 @@ const ReferenceWrite = () => {
     setPage(page);
   };
   
-  const limit = 10; // posts가 보일 최대한의 갯수
+  const limit = 15; // posts가 보일 최대한의 갯수
   const offset = (page - 1) * limit; // 시작점과 끝점을 구하는 offset
 
   const postsData = (posts) => {
@@ -46,7 +47,7 @@ const ReferenceWrite = () => {
     Axios.get('http://localhost:8080/list').then((response) => {
       setViewContent(response.data);
     })
-  }, [viewContent])
+  }, []);
 
   return (
     <div>
@@ -57,51 +58,47 @@ const ReferenceWrite = () => {
     </div>
    </div>
 
-   
-
-    <Container className='' style={{
-      minHeight: `calc(100vh - 120px`,
-    }}>
-
-<div class="row relative container2">
-        <div class="col-md-12">
-          <p class="sub_title">자료실</p>
-        </div>
-      </div>
-     
-
   
+      <Container className='' style={{
+        minHeight: `calc(100vh - 120px`,
+      }}>
 
-      <Link className='float-end' to="/AdminPassword"><Button variant="dark">글쓰기</Button></Link>
-      <Table striped hover>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-          </tr>
-        </thead>
-        <tbody>
-          <Posts info={postsData(viewContent)} />
-        </tbody>
-      </Table>
-      <div style={{width:"100%"}}>
-        <Pagination
-          activePage={page}
-          itemsCountPerPage={limit}
-          totalItemsCount={viewContent.length}
-          pageRangeDisplayed={5}
-          prevPageText="‹"
-          nextPageText="›"
-          onChange={handlePageChange}
-        />
-      </div>
+        <div class="row relative container2">
+          <div class="col-md-12">
+            <p class="sub_title">자료실</p>
+          </div>
+        </div>
 
-      <Routes>
-        <Route path="/AdminPassword" element={<AdminPassword />}></Route>
-      </Routes>
-    </Container>
+        <Link className='float-end mb-3' to="/AdminPassword"><Button variant="dark">글쓰기</Button></Link>
+        <Table style={{tableLayout : "fixed"}} hover>
+          <thead>
+            <tr>
+              <th style={{width : "5%", textAlign:"center"}}>번호</th>
+              <th style={{width : "65%", textAlign:"center"}}>제목</th>
+              <th style={{width : "10%", textAlign:"center"}}>작성자</th>
+              <th style={{width : "10%", textAlign:"center"}}>작성일</th>
+              <th style={{width : "10%", textAlign:"center"}}>첨부 파일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <Posts info={postsData(viewContent)} />
+          </tbody>
+        </Table>
+        <div style={{ width: "100%" }}>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={limit}
+            totalItemsCount={viewContent.length}
+            pageRangeDisplayed={5}
+            prevPageText="‹"
+            nextPageText="›"
+            onChange={handlePageChange}/>
+        </div>
+
+        <Routes>
+          <Route path="/AdminPassword" element={<AdminPassword />}></Route>
+        </Routes>
+      </Container>
     </div>
 
   )
