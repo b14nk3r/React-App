@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import { useLocation } from "react-router-dom"
 
 import LiionComposition from './liionComponent/LiionComposition'
+import Banner from './Banner'
 
 import {
   BrowserRouter as Router,
@@ -41,18 +42,18 @@ const LiionBattery = () => {
   return (
     <div>
 
-      <div id="sub-visual" class="bg-02">
-        <div class="sub_tit">
-          <h1>Li-ION</h1>
-          <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
-        </div>
-        <ul class="snb">
-          <li><Link to="/LiionBattery">리튬배터리 구성</Link></li>
-          <li><Link to="/LiionBattery/LiionRisks">리튬배터리 위험성</Link></li>
-          <li><Link to="/LiionBattery/ElectricCarBattery">전기차배터리 구성</Link></li>
-          <li><Link to="/LiionBattery/Ess">Energy Storage System</Link></li>
-        </ul>
-      </div>
+      <Banner title="제품소개" 
+              subtitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." 
+              backgroundImg="bg-03" 
+              isMenu="snb" 
+              linkOne="/LiionBattery" 
+              linkNameOne="리튬배터리 구성"
+              linkTwo="/LiionBattery/LiionRisks" 
+              linkNameTwo="리튬배터리 위험성"
+              linkThree="/LiionBattery/ElectricCarBattery" 
+              linkNameThree="전기차배터리 구성"
+              linkFour="/LiionBattery/Ess"
+              linkNameFour="Energy Storage System"></Banner>
 
       <Container class="sub-container">
        <Outlet />

@@ -25,13 +25,9 @@ const Home = () => {
     return (
         <>
             <Carousel>
-                <Carousel.Item id='home'>
+                <Carousel.Item id='home' className='vh-100'>
 
-                    <img
-                        className="d-block  vh-100 object-fit-cover "
-                        src={MainImage1}
-                        alt="First slide"
-                    />
+
                     <Carousel.Caption className=''>
                         <h4 className=' mb-3'>리튬이온 배터리 화재 진압으로 국민의 안전을 생각하는</h4>
                         <h1 className=' mb-3  '>전기자동차 전용 소화장치 </h1>

@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import '../wngocks.css';
 
 //Import BrowserRouter
 import {
@@ -29,10 +28,21 @@ import Ess from '../liionComponent/Ess';
 import { useCallback } from 'react';
 import NotFound from '../NotFound';
 import LiionBattery from '../LiionBattery';
-
+import Button from 'react-bootstrap/Button';
+import Axios from 'axios';
 //Header toggle 수정!!!! 중요
 
 const Header = () => {
+
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        console.log("로그인 검증 시작");
+        Axios.get('http://localhost:8080/checkuser').then((response) => {
+            console.log(response.data);
+            setIsLogin(true);
+        })
+    });
 
     const [navbar, setNavbar] = useState(false);
 
@@ -46,17 +56,24 @@ const Header = () => {
 
     window.addEventListener('scroll', changeBackground);
 
+    function logout() {
+        Axios.post('http://localhost:8080/logout').then((response) => {
+            console.log(response.data);
+            setIsLogin(false);
+        })
+    }
+
     return (
         <header>
-            
+
             <Router>
-                
-                <Navbar fixed="top" bg="light" expand="lg" className={navbar ? 'bg-white border-bottom' : 'bg-transparent'} > 
+
+                <Navbar fixed="top" bg="light" expand="lg" className={navbar ? 'bg-white border-bottom' : 'bg-transparent'} >
                     <Container className='top_con '>
                         <Navbar.Brand href="#home">
-                           <img className='me-5' src={Logo} style={{ height: '50px', width: '60px ' }}></img>
+                            <img className='me-5' src={Logo} style={{ height: '50px', width: '60px ' }}></img>
                         </Navbar.Brand>
-                     
+
                         <Navbar.Toggle aria-controls="basic-navbar-nav " />
                         <Navbar.Collapse id="basic-navbar-nav ">
 
@@ -68,17 +85,20 @@ const Header = () => {
                                     <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/Product">제품 소개</Nav.Link>
                                     <Nav.Link className={navbar ? 'ms-5 text-black' : 'ms-5 text-white'} as={Link} to="/ReferenceWrite">고객 지원</Nav.Link>
                                 </Nav>
+
+
                             </Container>
+                            {isLogin ? <Button onClick={logout} variant="outline-success">로그아웃</Button> : ""}
 
                         </Navbar.Collapse>
                     </Container>
-                    
+
                 </Navbar>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/ReferenceWrite" element={<ReferenceWrite />} />
                     <Route path="/Company" element={<Company />} />
-                    
+
                     <Route path="/LiionBattery" element={<LiionBattery />} >
                         <Route path='/LiionBattery/' element={<LiionComposition />} />
                         <Route path='/LiionBattery/LiionRisks' element={<LiionRisks />} />

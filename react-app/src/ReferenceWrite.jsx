@@ -16,11 +16,14 @@ import { Container } from 'react-bootstrap';
 import './css/pagination.css'
 import { useLocation } from "react-router-dom";
 
+import Banner from './Banner';
+
 //모바일 반응형 테이블로 수정
 const ReferenceWrite = () => {
   console.log("렌더링");
 
   const [viewContent, setViewContent] = useState([]);
+  const [isLogin, setIsLogin] = useState(false);
 
   const [page, setPage] = useState(1); //페이지
     const handlePageChange = page => {
@@ -41,7 +44,19 @@ const ReferenceWrite = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log("스크롤 탑");
   }, [pathname]);
+
+  //catch 문 넣기
+  useEffect(() => {
+    console.log("로그인 검증 시작");
+    Axios.get('http://localhost:8080/checkuser').then((response) => {
+      console.log(response.data);
+      setIsLogin(true);
+
+    })
+  }, []);
+
 
   useEffect(() => {
     Axios.get('http://localhost:8080/list').then((response) => {
@@ -49,14 +64,12 @@ const ReferenceWrite = () => {
     })
   }, []);
 
+
   return (
     <div>
-    <div id="sub-visual" class="bg-04">
-    <div class="sub_tit">
-      <h1>고객지원</h1>
-      <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
-    </div>
-   </div>
+   
+
+      <Banner title="고객지원" subTitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-04" isMenu="d-none"></Banner>
 
   
       <Container className='' style={{
@@ -69,7 +82,7 @@ const ReferenceWrite = () => {
           </div>
         </div>
 
-        <Link className='float-end mb-3' to="/AdminPassword"><Button variant="dark">글쓰기</Button></Link>
+        <Link className={isLogin ? 'float-end mb-3' : 'd-none'} to="/Reference"><Button variant="dark">글쓰기</Button></Link>
         <Table style={{tableLayout : "fixed"}} hover>
           <thead>
             <tr>

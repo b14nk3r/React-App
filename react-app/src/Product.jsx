@@ -5,6 +5,7 @@ import SubImage7 from "./images/w1.png"
 import SubImage8 from "./images/test.png"
 import { useLocation } from "react-router-dom"
 import Table from "react-bootstrap/Table";
+import Banner from './Banner'
 
 const Company = () => {
   console.log("렌더링");
@@ -16,13 +17,8 @@ const Company = () => {
   
   return (
     <div>
-  
-    <div id="sub-visual" class="bg-03">
-      <div class="sub_tit">
-        <h1>제품소개</h1>
-        <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
-      </div>
-     </div>
+
+    <Banner title="제품소개" subtitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-03" isMenu="d-none"></Banner>
 
     <Container class="sub-container">
       <div class="row relative container2">

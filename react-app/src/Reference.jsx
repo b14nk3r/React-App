@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
+import { TbError404 } from "react-icons/tb";
 
 //import CKeditor
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -15,19 +16,30 @@ import EditorComponent from "./EditorComponent"
 //import ReactQuill
 import ReactQuill from "react-quill";
 
+import Banner from './Banner';
+
 //500MB 제한
 const FILE_SIZE_MAX_LIMIT = 500 * 1024 * 1024;
-
-
 
 function Reference() {
     const navigate = useNavigate();
  
     const { pathname } = useLocation();
+    const [isLogin, setIsLogin] = useState(false);
 
     useEffect(() => {
-      window.scrollTo(0, 425);
+        window.scrollTo(0, 425);
     }, [pathname]);
+
+    //catch 문 넣기
+    useEffect(() => {
+        console.log("로그인 검증 시작");
+        Axios.get('http://localhost:8080/checkuser').then((response) => {
+            console.log(response.data);
+            setIsLogin(true);
+
+        })
+    }, []);
 
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
@@ -121,12 +133,7 @@ function Reference() {
 
     return (
         <div>
-            <div id="sub-visual" class="bg-04">
-                <div class="sub_tit">
-                    <h1>고객지원</h1>
-                    <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
-                </div>
-            </div>
+            <Banner title="고객지원" subTitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-04" isMenu="d-none"></Banner>
             <Container style={{
                 minHeight: `calc(100vh - 120px)`,
             }}>
@@ -135,8 +142,7 @@ function Reference() {
                         <p class="sub_title">자료실</p>
                     </div>
                 </div>
-
-                <form accept-charset="UTF-8" onSubmit={onSubmit} >
+                {isLogin ? <form accept-charset="UTF-8" onSubmit={onSubmit} >
                     <div>
                         <div class="form-group mb-3">
                             <input class="form-control" type="text"
@@ -169,6 +175,15 @@ function Reference() {
                         >글 쓰기</Button>
                     </div>
                 </form>
+                : 
+                    <div className='d-block text-center' style={{ height: "100%", padding: "4rem 0" }}>
+                        <TbError404 size={300} />
+                        <h1>접근 할 수 없는 페이지 입니다.</h1>
+                        <h4 className='text-muted'>입력하신 주소의 페이지를 찾을 수 없거나 서비스 연결 오류일 수 있습니다. 주소를 확인하셔서 잠시 후 다시 이용해주세요.</h4>
+                    </div>}
+
+
+            
             </Container>
         </div>
     )

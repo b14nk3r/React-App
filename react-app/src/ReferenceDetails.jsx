@@ -8,6 +8,7 @@ import { IoMdDownload } from "react-icons/io";
 //*완료 footer 컴포넌트 따로만들기
 //*완료 목록으로 버튼만들기
 //*완료 유효하지 않은 주소 페이지 만들기
+//*완료 메인화면 레이아웃 다시 짜기
 
 //부트스트랩 클래스네임 보면서 멋있게 바꾸기
 //가능하다면 게시판 상세 axios말고 props로 가지고오기 
@@ -19,10 +20,9 @@ import { IoMdDownload } from "react-icons/io";
 //글쓰기 alert 넣을지 말지 고민하기
 //상단배너 컴포넌트화
 //reference referencewrite 서로 이름바꾸기
-//관리자 페이지 토큰으로 설정하기
+//관리자 페이지 jwt refrash 토큰으로 설정하기 코딩애플 보고 보안이슈 해결하기 리액트 권한별 라우팅
 //크롬 탭 로고 바꾸기
 //빌드할때 난독화 할지 생각하기
-//메인화면 레이아웃 다시 짜기
 //웹사이트 컬러정하기
 //웹사이트 메인, 배너 사진 찾기
 //게시글 수정, 삭제 만들기
@@ -33,6 +33,8 @@ import { IoMdDownload } from "react-icons/io";
 //Header toggle 수정!!!! 중요
 //폰트 크기 반응형으로 바꾸기
 //배포전에 콘솔로그 제거
+//로고 pptx 고화질로 저장 레지스트리편집
+
 
 const Board = () => {
   console.log("렌더링");
