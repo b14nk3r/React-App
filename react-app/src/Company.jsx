@@ -4,6 +4,10 @@ import { useLocation } from "react-router-dom"
 
 import LiionComposition from './liionComponent/LiionComposition'
 
+import Banner from './Banner'
+
+//이 곳 li a태그 호버
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,40 +41,29 @@ const Company = () => {
   return (
     <div>
 
-      <div id="sub-visual" class="bg-02">
-        <div class="sub_tit">
-          <h1>회사소개</h1>
-          <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
-        </div>
-        <ul class="snb">
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company">리튬배터리 구성</Link></li>
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/LiionRisks">리튬배터리 위험성</Link></li>
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/ElectricCarBattery">전기차배터리 구성</Link></li>
-          <li><Link style={{ color : "white", textDecoration: "none" }} to="/Company/Ess">Energy Storage System</Link></li>
-        </ul>
-      </div>
-
-      <div class="row relative container2">
-        
-          <p class="sub_title">인사말</p>
-        
-      </div>
+      <Banner title="회사소개" subTitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-05" isMenu="snb"></Banner>
 
       <Container class="sub-container">
-       <Outlet />
-      
+        <Outlet />
+
+        <div class="row relative container2">
+
+          <div class="col-md-12">
+
+            <p class="sub_title">인사말</p>
+
+          </div>
+
+        </div>
+
 
 
       </Container>
 
-      <div className='add'>
-
-</div>
-
+      
 
     </div>
 
   )
 }
-
 export default Company

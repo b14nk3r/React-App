@@ -1,143 +1,207 @@
 @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
 
-h1{ 
-    font-family: 'NanumSquareNeoHeavy';
+html {    font-size: 62.5%;    }
 
+:root {
+    --font-size-lg: clamp(0.5rem, 4vw, 1.5rem);
+    --font-size-write: clamp(1rem, 4vw, 2rem);
+    --font-size-write2: clamp(1rem, 4vw, 1.5rem);
+    --font-size-main1: clamp(0.5rem, 4vw, 2rem);
+    --font-size-main2: clamp(2.2rem, 4vw, 7rem);
+    --font-size-main3: clamp(0.5rem, 4vw, 1.6rem);
+    --font-size-banner: clamp(5rem, 4vw, 7rem);
+    --font-size-banner-sub: clamp(0.5rem, 4vw, 2rem);
+    --font-size-md: clamp(1.5rem, 3vw, 2.5rem);
+    --font-size-sm: clamp(1rem, 2vw, 1.5rem);
+  }
+
+
+
+  .sub_tex > .sub_tex1 h6{
+    font-size: 1.6rem;
+    line-height: 30px;
+    word-break: keep-all;
+  }
+
+  .sub_tex > .sub_tex1 h4{
+    font-size: 2.5rem;
+  
+  }
+
+
+.con_txt{
+    font-size: 1.6rem;
 }
 
-nav{
+.con_txt > h1{
+    font-size: 5rem;
+}
+
+.con_txt > h4{
+    font-size: 2rem;
+}
+
+#sub-visual > .sub_tit > h1 {
+     font-size: var(--font-size-banner);
+}
+
+#sub-visual > .sub_tit > h5 {
+    font-size: var(--font-size-banner-sub);
+}
+  
+
+a{
+    font-size: 1.6rem;
+} 
+
+.header-font > a{
+    font-size: 1.6rem;
+}
+
+.product-font > h4{
+    font-size: 3rem;
+    margin-bottom: 15px;
+    
+}
+
+.product-font > h6{
+    font-size: 1.8rem;
+    word-break: keep-all;
+    line-height: 35px;
+}
+
+
+
+h1 {
+    font-family: 'NanumSquareNeoHeavy';
+    font-size: 5rem;
+}
+
+nav {
     font-family: 'NanumSquareNeoBold';
 }
 
-.nav-link:hover{color: #4caf50 !important;}
+.nav-link:hover {
+    color: #4caf50 !important;
+}
 
-h2{
+h2 {
     font-family: 'NanumSquareNeoHeavy';
-    margin-bottom: 0;
+    font-size: 4rem;
 }
 
-h3{font-family: 'NanumSquareNeoBold';}
+h3 {
+    font-family: 'NanumSquareNeoBold';
+    font-size: 3rem;
+}
 
-h4{font-family: 'NanumSquareNeoBold';}
+h4 {
+    font-family: 'NanumSquareNeoBold';
+    font-size: 2rem;
+}
 
-.card-body > h5 {
+h5 {
+    font-family: 'NanumSquareNeo';
+    font-size: 1rem;
+}
+
+.card-body>h5 {
     font-family: 'NanumSquareNeoHeavy';
 }
 
-h6{font-family: 'NanumSquareNeoBold';}
+h6 {
+    font-family: 'NanumSquareNeoBold';
+    font-size: 0.5rem;
+}
 
-
-p{font-family: 'NanumSquareNeo';
-    margin-bottom: 0;
+p {
+    font-family: 'NanumSquareNeo';
+    font-size: 1.6rem;
+ 
 
 }
 
-.cs-box {
 
-  
+
+.v_more{
+    text-align: end;
+    padding-top: 35%;
+}
+
+
+/*메인페이지 하단 고객지원*/
+.card-box>.map {
+
+    color: #000;
+}
+
+.file, .map, .youtube, .call {
+    padding: 40px 50px;
+    text-align: end;
+}
+
+.card-box > .file > h2, .map > h2, .youtube > h2, .call > h2 {
+    font-family: 'NanumSquareNeoBold';
+
+}
+
+
+.card-box {
     /*width: 90%;*/
     margin: 0 auto;
-   
 }
 
-.ccs-box{
+.card_box {
     width: 100%;
-       
+    margin-bottom: 100px;
+
 }
 
-.cs-box > .file {
-  
-    background: url(./images/file.png) no-repeat calc(32% - 40px) 50%;
-    
+.card-box>.file {
     color: #000;
-    background-size:13%;
-   
 }
 
-.cs-box > .youtube {
-    
-    background: url(./images/youtube.png) no-repeat calc(32% - 40px) 50%;
+.card-box>.youtube {
     color: #000;
-    background-size:13%;
-    
 }
 
-.cs-box > .call {
-    
-    background: url(./images/call.png) no-repeat calc(32% - 40px) 50%;
+.card-box>.call {
     color: #000;
-    background-size:13%;
-    
 }
 
-.cs-box > .map {
-    
-    background: url(./images/map.png) no-repeat calc(32% - 40px) 50%;
-    color: #000;
-    background-size:13%;
-    
+/*메인페이지 하단 고객지원*/
+
+
+
+
+/*베너 백그라운드*/
+.bg-02 {
+    background: url(./images/top.jpg) no-repeat 50% 50%;
+    background-size: cover;
 }
 
-
-
-.file, .map, .youtube, .call{  
-    padding: 40px 50px;
-    text-align : end;
-  
-    
+.bg-03 {
+    background: url(./images/top6.jpg) no-repeat 50% 50%;
+    background-size: cover;
 }
 
-.file > h2, .map > h2, .youtube > h2, .call > h2 {  
-    font-family: 'NanumSquareNeoBold';
-        
-    }
-  
-    
-
-
-
-.col{
-    padding-left: 0;
-    padding-right: 0;
+.bg-04 {
+    background: url(./images/top4.jpg) no-repeat 50% 50%;
+    background-size: cover;
 }
 
-.aa{
-   
-
-    position:absolute;
-    left: 50%;
-    top:50%;
-   transform: translate(-50%, -50%);
-
- 
-   
+.bg-05 {
+    background: url(./images/top5.jpg) no-repeat 50% 50%;
+    background-size: cover;
 }
+/*베너 백그라운드*/
 
-.card-body{
-    height : 300px;
-    position: relative;
-    border: #000;
-}
-
+/* 베너 헤더 */
 #sub-visual {
     height: 500px;
     position: relative;
 }
 
-.bg-02 {
-    background:  url(./images/top.jpg) no-repeat 50% 50%;
-    background-size: cover;
-}
-
-.bg-03 {
-    background:  url(./images/top3.jpg) no-repeat 50% 50%;
-    background-size: cover;
-}
-
-.bg-04 {
-    background:  url(./images/top4.jpg) no-repeat 50% 50%;
-    background-size: cover;
-}
 
 #sub-visual .sub_tit {
     position: absolute;
@@ -146,19 +210,42 @@ p{font-family: 'NanumSquareNeo';
     width: 100%;
     text-align: center;
     color: #fff;
+   
+}
+/* 베너 헤더 */
+
+
+/*찾는중*/
+
+.col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.aa {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-body {
+    height: 300px;
+    position: relative;
+    border: #000;
 }
 
 .snb {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0,0,0,.8);
-    color: rgba(255,255,255,.8);
+    background: rgba(0, 0, 0, .8);
+    color: rgba(255, 255, 255, .8);
     text-align: center;
     margin-bottom: 0;
 }
 
-.ul, li{
+.ul,li {
     list-style: none;
     word-break: keep-all;
     line-height: 1;
@@ -171,6 +258,7 @@ p{font-family: 'NanumSquareNeo';
 ul li {
     list-style-type: none;
 }
+
 .snb li a {
     display: inline-block;
     padding: 0 20px;
@@ -197,8 +285,99 @@ ul li {
     padding-right: 15px;
 }
 
+/*찾는중*/
+
+/*푸터 설정*/
+
+.foo{
+    margin-bottom: 0;
+}
+
+.fo {
+    color: #fff;
+   /* font-size: 12px; */
+}
+
+.fo1 {
+    font-weight: bold;
+}
+/*푸터 설정*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*포인트 색*/
+
+.point_col {
+    color: #4caf50;
+}
+
+
+.point_col {
+    color: #4caf50;
+}
+
+
+.point {
+    color: #4caf50;
+    font-family: 'NanumSquareNeoHeavy';
+
+}
+/*포인트 색*/
+
+/*테이블 속성*/
+table {
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    font-size: 1.6rem;
+}
+
+.tb {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+
+}
+
+.tb th {
+    white-space: inherit;
+    background: #F5F5F5;
+    font-weight: 400;
+    text-align: center;
+
+}
+
+.tb tr>* {
+    padding: 2em 0;
+    border: 1px solid #E6E6E6;
+    border-top: 0;
+}
+
+th {
+    font-family: 'NanumSquareNeoHeavy';
+}
+
+tr {
+    font-family: 'NanumSquareNeoBold';
+}
+/*테이블 속성*/
+
+
+
+/*타이틀별 속성*/
+
 .sub_title {
-    font-size: 34px;
+     font-size: 3.4rem;
     padding: 3% 0 3% 0;
     margin-bottom: 3%;
     font-weight: bold;
@@ -207,302 +386,337 @@ ul li {
     font-family: "NanumSquareNeoHeavy";
 }
 
-.sub2_title {
-    font-size: 27px;
 
-    font-family: "NanumSquareNeoBold";
-}
-
-.foo_cont{
-    background-color: #4caf50;
-}
-
-
-
-.fo{
-    color: #fff;
-    font-size: 12px;
-}
-
-.fo1{
-    font-weight: bold;
-}
-
-.po_co{
-    color:#4caf50;
-}
-
-
-
-
-.tb {
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-    
-}
-
-
-
-.tb th {
-    white-space: inherit;
-    background: #F5F5F5;
-    font-weight: 400;
-    text-align: center;
-    
-}
-
-.tb tr>* {
-    padding: 1em 2em;
-    border: 1px solid #E6E6E6;
-    border-top: 0;
-}
-
-.point{
- 
-    color: #4caf50;
-    font-family: 'NanumSquareNeoHeavy';
-
-}
-
-table {
-    width: 100%;
-  }
-
-  th{
-    font-family: 'NanumSquareNeoHeavy';
-  }
-
-  tr{
-    font-family: 'NanumSquareNeoBold';
-  }
-
-  .sub2_title{
-    font-size: 30px;
+.sub_title2 {
+   font-size: 3rem; 
     text-align: center;
     font-family: 'NanumSquareNeoHeavy';
+}
 
-  }
-
-  .sub3_title{
+.sub_title3 {
     text-align: center;
+}
 
-  }
-
-  
-  .sub3_title > .su > h4{
-    margin-bottom: 20px;
-    font-size: large;
-    font-family: 'NanumSquareNeoHeavy';
-    
-  }
-
-
- .se{
-    display: block; 
-    margin: 0px auto;
- }
-
-
-
- .g{
-    line-height:2.5;
+.sub_title4 {
+    font-size: 1.6rem;
+    line-height: 2.5;
     word-break: keep-all;
 }
-    
- 
+/*타이틀별 속성*/
 
- .img12{
-    width: 100%;
-    height: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
- }
 
- 
- .img13{
-    width: 100%;
-    height: 100%;
 
- }
 
- .img12l{
-    width: 100%;
-    height: 100%;
-    padding-right: 10%;
- }
+/*리튬이온배터리 구성 긴글*/
+.sub_title3 > h4 {
+    margin-bottom: 20px;
+   /* font-size: large; */
+    font-family: 'NanumSquareNeoHeavy';
+}
+/*리튬이온배터리 구성 긴글*/
 
- .img12r{
-    width: 100%;
-    height: 100%;
-    padding-left: 10%;
- }
 
- .images2{
-    margin: auto;
+
+
+/*제품소개 이미지*/
+.sub_img2 {
     display: block;
- }
-
- .snb > li > a {
-    color: #fff;
-    text-decoration: none;
-   
- }
-
- 
-
- .snb > li > a:hover {
-    color: #4caf50;
-  }
-
-  
-
-
-
- 
-
-
-
-
- .aw{
-    justify-content: center;
+    margin: 0px auto;
 }
- 
-
-.add{
-    margin: 100px;
-}
-
-
-   .ba{
-    color: #000;
-    text-decoration: none;
-
-
-   }
-
-   .ba:hover{
-    color: #000;
-    text-decoration: none;
-   }
-
-    
+/*제품소개 이미지*/
 
 
 
-  
 
-   .img00{
+
+/*홈 소화기 사진*/
+.img00{
     width: 50%;
     height: 100%;
     margin: auto;
     display: block;
-    
- 
    }
-
-   .a > .su > h4{
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-family: 'NanumSquareNeoHeavy';
- 
-    
-  }
-
-  .a > .su > h6{
-    font-size: 15px;
-    font-family: 'NanumSquareNeoBold';
- 
-    
-  }
-
-  .a > .su1{
-    
-    vertical-align: top;
-    
-    
-  
-  }
-
- 
-
-
-  .su > h4{
-    font-size: 25px;
-}
+   /*홈 소화기 사진*/
 
 
 
-.su > h6{
-    font-size: 16px;
-    line-height: 2em;
-    word-break: keep-all;
-}
-
-
-.su1 > h4{
-    font-size: 25px;
-
-}
-
-
-
-.su1 > h6{
-    font-size: 16px;
-    line-height: 2em;
-    word-break: keep-all;
-}
-
-
-
-
-
-.aed1{
-    text-align: end;
-    padding-top: 35%;
-}
-
-
-
-
- 
-.w34{
-    color: #216bf3;
-}
-
-.qwer{
-    color: #e53935;
-    font-family: 'NanumSquareNeoHeavy';
-}
-
-.rewq{
-    color: #1e88e5;
-    font-family: 'NanumSquareNeoHeavy';
-}
-
-
-
-
- .li_b1{
-    display: flex;
-    justify-content: center;
+/*Li-Ion소개 이미지*/
+.sub_img1 {
+    max-width: 100%;
 
    
+}
+
+
+
+.img12 {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.img12l {
+    width: 100%;
+   
+    padding-right: 10%;
+}
+
+.img12r {
+    width: 100%;
+    padding-left: 10%;
+}
+/*Li-Ion소개 이미지*/
+
+
+
+/*ess 이미지*/
+.images2 {
+    margin: auto;
+    display: block;
+}
+/*ess 이미지*/
+
+
+/*서브베너 네브바*/
+.snb>li>a {
+    font-size: var(--font-size-lg);
+    color: #fff;
+    text-decoration: none;
+}
+
+.snb>li>a:hover {
+    color: #4caf50;
+}
+
+/*서브베너 네브바*/
+
+
+
+
+
+/*다운로드 호버옵션*/
+a.download {
+    font-family: 'NanumSquareNeo';
+}
+
+a.download:link {
+    text-decoration: none
+}
+
+a.download:visited {
+    text-decoration: none
+}
+
+a.download:hover {
+    text-decoration: underline
+}
+
+a.download:active {
+    text-decoration: none
+}
+
+a.download:link svg {
+    color: black;
+}
+
+a.download:visited svg {
+    color: black;
+}
+
+a.download:hover svg {
+    color: white;
+}
+
+a.download:active svg {
+    color: black;
+}
+/*다운로드 호버옵션*/
+
+
+/*메인 페이지 베너 이미지*/
+#home {
+    background-image: url("./images/main_img2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+#home2 {
+    background-image: url("./images/main_iimg.PNG");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+/*메인 페이지 베너 이미지*/
+
+
+.card_text > h2 {
+    font-size: 3rem;
+    font-family: 'NanumSquareNeoBold';
+}
+
+
+
+.sub_title3{ 
+    padding: 2%;
  }
 
- .li_b1 > .g{
-    width: 80%;
+
+ /*메인페이지 고객지원 카드*/
+ .CardImg1,  .CardImg2,  .CardImg3,  .CardImg4{
+    width: 5rem;
+    height: 5rem;
+ }
+
+ .card_text{
+   width: 100%;
+   font-size: 1.6rem;
+ }
+ /*메인페이지 고객지원 카드*/
+
+ 
+/*상단바 로고*/
+ .h_logo{
+  display: block;
+  position: absolute;
+  left: 17%;
+ }
+ /*상단바 로고*/
+
+
+
+ /*메인 베너 */
+ #home > .main_tit > .main_tit1 {
+    display: flex;
+    align-items: center;
+	color: #000;
+    font-size: var(--font-size-main1);
+ }
+
+
+
+ #home > .main_tit > .main_tit1::before, .main_tit1::after { 
+    content: "";
+	flex-grow: 1;
+	background: #000;
+	height: 2px;
+	font-size: 0px;
+	margin: 0px 20px;
+ }
+
+ #home > .main_tit > .main_tit2 {
+    color:  #000;
+   /* font-size: 70px; */
+   font-size: var(--font-size-main2);
+ }
+
+
+ #home > .main_tit > .main_tit3 {
+    color: #000;
+    margin-top: 25px;
+    font-size: var(--font-size-main3);
+ }
+
+ #home > .main_tit > .main_tit2 > .sub_tit  > .sub_text{
+    color: #ff9839;
+   /* font-size: 70px; */
  }
 
  
-
-
-
- .li_b{
-    
- }
-
- .sub4_title{
-    
-    padding: 2%;
+ #home > .main_tit > .main_tit2 > .sub_tit {
+        width: 100%;
+    border-bottom:solid 2px #000;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
 
  }
+ /*메인 베너 */
+
+
+
+
+ /*프로덕트 이미지*/
+.subimg{
+    width: 50%;
+  
+}
+
+.subimg2{
+    width: 50%;
+}
+/*프로덕트 이미지*/
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.125em 0;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.hd-title > h5{
+    
+    font-family: 'NanumSquareNeoHeavy';
+    font-size: var(--font-size-write);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all; 
+}
+
+.hd-title {
+    display: flex;
+    max-width: 80%;
+    min-width: 70%;
+}
+
+
+.hd-info > .hd-info-col > spen {
+    
+    font-size: var(--font-size-write2);
+    font-family: 'NanumSquareNeoBold';
+}
+
+
+.write_btn {
+    
+    display: flex;
+    justify-content: end;
+}
+
+.contentImg > p > img {
+    max-width: 100%;
+}
+ 
+.details-text > h3 {
+    font-size: 2.5rem;
+    font-family: NanumSquareNeoHeavy;
+}
+
+
+
+.contentImg > h1 {
+    font-size: 4rem;
+}
+
+.contentImg > h2 {
+    font-size: 3rem;
+}
+
+.contentImg > h3 {
+    font-size: 2rem;
+}
+
+.down_a {
+    font-size: 1.4rem;
+}
+
+button{
+    font-size: 1.6rem;
+}
+
+.btn-a {
+    font-size: 1.6rem !important;
+}

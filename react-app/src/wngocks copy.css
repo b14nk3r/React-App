@@ -1,193 +1,564 @@
- /******상단바******/
+/*@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
 
+html {    font-size: 62.5%;    }
 
+h1 {
+    font-family: 'NanumSquareNeoHeavy';
 
-.navbar-brand{
 }
-/*회사명 콘텐츠 */
 
-.me-auto {
+nav {
+    font-family: 'NanumSquareNeoBold';
+}
 
- }
- /*상단바 아이템*/
+.nav-link:hover {
+    color: #4caf50 !important;
+}
 
-.nav-link{
-   
- }
+h2 {
+    font-family: 'NanumSquareNeoHeavy';
+    margin-bottom: 0;
+}
+
+h3 {
+    font-family: 'NanumSquareNeoBold';
+}
+
+h4 {
+    font-family: 'NanumSquareNeoBold';
+}
+
+h5 {
+    font-family: 'NanumSquareNeo';
+}
+
+.card-body>h5 {
+    font-family: 'NanumSquareNeoHeavy';
+}
+
+h6 {
+    font-family: 'NanumSquareNeoBold';
+}
+
+p {
+    font-family: 'NanumSquareNeo';
  
-/*상단바 아이템 콘텐츠 */
 
- .navbar-collapse{
-
- }
- 
- /*상단바 아이템 컨테이너 */
-
- .top_con{
-
- }
-/*상단바 전체 컨테이너 */
-
-
-.main_con{
-}
-/*베너 컨텐츠*/
-
-
-
-
-.d-block{ /* 이미지의 크기 균일하게 조정 및 반응형으로 이동 시 옵션 아이콘 같이 이동 */
-    object-fit: cover;
 }
 
 
 
-
-
-
-
- /******상단바******/
-
-
-/* 메인 콘텐츠 */
-
-
-.main_con{
-    /* margin-top: 100px; */
-    border : 1px solid;     /* 이 그리드를 지우면 헤더 회사소개를 누르면 텍스트를 먹어버림 */
-    /*text-align : center;*/
-  }
-
-
-
-.main_cont > h3 {
-    display : flex;
-    margin-top: 100px;
-    justify-content : center;
-  
+.v_more{
+    text-align: end;
+    padding-top: 35%;
 }
 
 
+/*메인페이지 하단 고객지원*/
+.card-box>.map {
 
-.main_cont > h2 {
-    display : flex;
-    margin-top: 30px;
-    justify-content : center;
-    margin-bottom: 100px;
-   
+    color: #000;
+}
+
+.file, .map, .youtube, .call {
+    padding: 40px 50px;
+    text-align: end;
+}
+
+.file>h2, .map>h2, .youtube>h2, .call>h2 {
+    font-family: 'NanumSquareNeoBold';
+
 }
 
 
-
-  .main_contt{
-  display: inline-block;
-  padding: 40px;
-  }
-
-
-.main_contt > img
-{
-    float: left;
-    width: 589px;
-    height: 419px;
-    object-fit: cover;
-    margin-left: 10px;
+.card-box {
+    /*width: 90%;*/
+    margin: 0 auto;
 }
 
-.col
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 160px; /* 반응형으로 변환 시 패딩을 임의로 조정해서 다시확인 필요 */
-   
-}
-
-.col > p { margin-bottom: 0.01em; } /* 자간 더 좁힐지 확인 */
-
-
-
-
-/* */
-
-.main_conttt{
-    display: inline-block;
-    padding: 40px; /*확인 다시필요*/
-    }
-  
-  
-  .main_conttt > img
-  {
-      float: right;
-      width: 589px;
-      height: 419px;
-      object-fit: cover;
-      float: right;
-      margin-left: 30px; /* 왼쪽 텍스트와 마진을 줘서 다시확인 필요함 */
-  
-  
-  }
-  
-  .col1
-  {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 160px; /*패딩값 오른쪽으로 정렬하고 왼쪽으로 패딩줘서 확인 다시해야함 */
-    
-  }
-  
-  .col1 > p { margin-bottom: 0.01em; }  /* 자간 더 좁힐지 확인 */
-
-
-  .container1 {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 100px ;
- }
- 
- .box1, .box2, .box3 {
-    margin-left:10px;
-    width: 33%;
-    
- }
-  
-
- .container1 .box1 img, .container1 .box2 img, .container1 .box3 img {
+.card_box {
     width: 100%;
-    height: 700px;
-    }
+    margin-bottom: 100px;
 
-    .container2 > h3 {
-        display : flex;
-        margin-top: 100px;
-        justify-content : center;
-      
-    }
-    
-    
-    .container2 > h2 {
-        display : flex;
-        margin-top: 30px;
-        justify-content : center;
-        margin-bottom: 100px;
-       
-    }
+}
 
-  /* 메인 콘텐츠 */
+.card-box>.file {
+    color: #000;
+}
 
+.card-box>.youtube {
+    color: #000;
+}
+
+.card-box>.call {
+    color: #000;
+}
+
+/*메인페이지 하단 고객지원*/
+
+
+
+
+/*베너 백그라운드*/
+.bg-02 {
+    background: url(./images/top.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.bg-03 {
+    background: url(./images/top6.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.bg-04 {
+    background: url(./images/top4.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.bg-05 {
+    background: url(./images/top5.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+/*베너 백그라운드*/
+
+/* 베너 헤더 */
+#sub-visual {
+    height: 500px;
+    position: relative;
+}
+
+
+#sub-visual .sub_tit {
+    position: absolute;
+    top: calc(50% - 30px);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+/* 베너 헤더 */
+
+
+/*찾는중*/
+
+.col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.aa {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-body {
+    height: 300px;
+    position: relative;
+    border: #000;
+}
+
+.snb {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, .8);
+    color: rgba(255, 255, 255, .8);
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.ul,li {
+    list-style: none;
+    word-break: keep-all;
+    line-height: 1;
+}
+
+.snb li {
+    display: inline-block;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.snb li a {
+    display: inline-block;
+    padding: 0 20px;
+    height: 60px;
+    line-height: 60px;
+    font-family: "NanumSquareNeoBold";
+}
+
+.container2 {
+    margin: 0 auto;
+    max-width: 1334px;
+    padding: 0px;
+}
+
+.relative {
+    position: relative;
+}
+
+.col-md-12 {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*찾는중*/
+
+/*푸터 설정*/
+
+.foo{
+    margin-bottom: 0;
+}
+
+.fo {
+    color: #fff;
+    font-size: 12px;
+}
+
+.fo1 {
+    font-weight: bold;
+}
+/*푸터 설정*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*포인트 색*/
+
+.point_col {
+    color: #4caf50;
+}
+
+
+.point_col {
+    color: #4caf50;
+}
+
+
+.point {
+    color: #4caf50;
+    font-family: 'NanumSquareNeoHeavy';
+
+}
+/*포인트 색*/
+
+/*테이블 속성*/
+table {
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+.tb {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+
+}
+
+.tb th {
+    white-space: inherit;
+    background: #F5F5F5;
+    font-weight: 400;
+    text-align: center;
+
+}
+
+.tb tr>* {
+    padding: 2em 0;
+    border: 1px solid #E6E6E6;
+    border-top: 0;
+}
+
+th {
+    font-family: 'NanumSquareNeoHeavy';
+}
+
+tr {
+    font-family: 'NanumSquareNeoBold';
+}
+/*테이블 속성*/
+
+
+
+/*타이틀별 속성*/
+
+.sub_title {
+    font-size: 34px;
+    padding: 3% 0 3% 0;
+    margin-bottom: 3%;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    font-family: "NanumSquareNeoHeavy";
+}
+
+
+.sub_title2 {
+    font-size: 30px;
+    text-align: center;
+    font-family: 'NanumSquareNeoHeavy';
+}
+
+.sub_title3 {
+    text-align: center;
+}
+
+.sub_title4 {
+    line-height: 2.5;
+    word-break: keep-all;
+}
+/*타이틀별 속성*/
+
+
+
+
+/*리튬이온배터리 구성 긴글*/
+.sub_title3 > h4 {
+    margin-bottom: 20px;
+    font-size: large;
+    font-family: 'NanumSquareNeoHeavy';
+}
+/*리튬이온배터리 구성 긴글*/
+
+
+
+
+/*제품소개 이미지*/
+.sub_img2 {
+    display: block;
+    margin: 0px auto;
+}
+/*제품소개 이미지*/
+
+
+
+
+
+/*홈 소화기 사진*/
+.img00{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    display: block;
+   }
+   /*홈 소화기 사진*/
+
+
+
+/*Li-Ion소개 이미지*/
+.sub_img1 {
+    max-width: 100%;
+
+   
+}
+
+
+
+.img12 {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.img12l {
+    width: 100%;
+   
+    padding-right: 10%;
+}
+
+.img12r {
+    width: 100%;
+    padding-left: 10%;
+}
+/*Li-Ion소개 이미지*/
+
+
+
+/*ess 이미지*/
+.images2 {
+    margin: auto;
+    display: block;
+}
+/*ess 이미지*/
+
+
+/*서브베너 네브바*/
+.snb>li>a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.snb>li>a:hover {
+    color: #4caf50;
+}
+
+/*서브베너 네브바*/
+
+
+
+
+
+/*다운로드 호버옵션*/
+a.download {
+    font-family: 'NanumSquareNeo';
+}
+
+a.download:link {
+    text-decoration: none
+}
+
+a.download:visited {
+    text-decoration: none
+}
+
+a.download:hover {
+    text-decoration: underline
+}
+
+a.download:active {
+    text-decoration: none
+}
+
+a.download:link svg {
+    color: black;
+}
+
+a.download:visited svg {
+    color: black;
+}
+
+a.download:hover svg {
+    color: white;
+}
+
+a.download:active svg {
+    color: black;
+}
+/*다운로드 호버옵션*/
+
+
+/*메인 페이지 베너 이미지*/
+#home {
+    background-image: url("./images/main_img2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+#home2 {
+    background-image: url("./images/main_iimg.PNG");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+/*메인 페이지 베너 이미지*/
+
+
+
+
+
+.sub_title3{ 
+    padding: 2%;
+ }
+
+
+ /*메인페이지 고객지원 카드*/
+ .CardImg1,  .CardImg2,  .CardImg3,  .CardImg4{
+    width: 5rem;
+    height: 5rem;
+ }
+
+ .card_text{
+   width: 100%;
+ }
+ /*메인페이지 고객지원 카드*/
+
+ 
+/*상단바 로고*/
+ .h_logo{
+  display: block;
+  position: absolute;
+  left: 17%;
+ }
+ /*상단바 로고*/
+
+
+
+ /*메인 베너 */
+ #home > .main_tit > .main_tit1 {
+    display: flex;
+    align-items: center;
+	color: #000;
+ }
+
+ #home > .main_tit > .main_tit1::before, .main_tit1::after { 
+    content: "";
+	flex-grow: 1;
+	background: #000;
+	height: 2px;
+	font-size: 0px;
+	margin: 0px 20px;
+ }
+
+ #home > .main_tit > .main_tit2 {
+    color:  #000;
+    font-size: 70px;
+ }
+
+
+ #home > .main_tit > .main_tit3 {
+    color: #000;
+    margin-top: 25px;
+ }
+
+ #home > .main_tit > .main_tit2 > .sub_tit  > .sub_text{
+    color: #ff9839;
+    font-size: 70px;
+ }
+
+ 
+ #home > .main_tit > .main_tit2 > .sub_tit {
+        width: 100%;
+    border-bottom:solid 2px #000;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+
+ }
+ /*메인 베너 */
+
+
+
+
+ /*프로덕트 이미지*/
+.subimg{
+    width: 50%;
   
+}
 
-  .navbar {
-    background-color: transparent; /* 기본적으로 투명하게 지정 */
-    transition: background-color 0.3s; /* 색상 변경에 대한 전환 효과 적용 */
-  }
-  
-  .navbar.scrolled {
-    background-color: #fff; /* 스크롤 내려갈 때의 색상 지정 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
-  }
+.subimg2{
+    width: 50%;
+}
+/*프로덕트 이미지*/
 
 
-
+ 
+*/

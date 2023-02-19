@@ -6,25 +6,25 @@ const Footer = () => {
   return (
     /*<div>Footer 입니다</div>*/
     <>
-         <div className='foo_cont border '>
+         <div className='foo_cont bg-dark pt-5 pb-5'>
           <Container>
-                        <div className='d-flex ms-3'>
-                            <p className='text-center mb-2 mt-5 fo fo1'>(주)마루</p>
+                        <div className='d-flex '>
+                            <p className='text-center fo fo1'>주식회사 마루</p>
                         </div>
 
-                        <div className='d-flex ms-3'>
-                            <p className='text-center me-3 fo'>대표 : 정수현</p>
-                            <p className='text-center me-3 fo'>사업자번호 : 503-81-11626</p>
-                            <p className='text-center me-3 fo'>주소 : 대구광역시 달성군 구지면 국가산단대로50길 40(응암리)</p>
+                        <div className='d-flex '>
+                           {/*   <p className='text-center me-3 fo'>대표 : 정수현</p> */}
+                         {/*   <p className='text-center me-3 fo'>사업자번호 : 503-81-11626</p> */}
+                            <p className='text-center me-3 fo'>주소 : (12939) 경기도 하남시 미사강변로11 523호</p>
                         </div>
 
-                        <div className='d-flex ms-3'>
-                            <p className='text-center me-3 fo'>대표번호 : 1544-2774</p>
-                            <p className='text-center me-3 fo'>Tel : 053-564-2201~4</p>
-                            <p className='text-center me-3 fo'> Fax : 053-564-0708</p>
-                            <p className='text-center me-3 fo'>Email: blank@naver.com</p>
+                        <div className='d-flex '>
+                            <p className='text-center me-3 fo'>대표번호 : 031-796-9390</p>
+                             {/* <p className='text-center me-3 fo'>Tel : 053-564-2201~4</p>*/}
+                            <p className='text-center me-3 fo'> Fax : 031 - 796 - 9391</p>
+                            <p className='text-center me-3 fo'>Email:  www.maru.biz</p>
                         </div>
-                        <p className='ms-3  mt-2 mb-5 fo fo1'>Copyright (c)HANKOOKFIRE. All Rights Reserved.</p>
+                       {/* <p className='fo fo1 mb-2'>Copyright (c)HANKOOKFIRE. All Rights Reserved.</p> */}
                         </Container>
 
 
