@@ -1,9 +1,8 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
-import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
-import { TbError404 } from "react-icons/tb";
-
+import { Routes, Route, Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import AWS from 'aws-sdk';
 //import CKeditor
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -11,53 +10,78 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 //import ReactHtmlParser
 import ReactHtmlParser from 'react-html-parser'
 import Axios from 'axios';
-
 import EditorComponent from "./EditorComponent"
 //import ReactQuill
 import ReactQuill from "react-quill";
 
-import Banner from './Banner';
-
 //500MB 제한
 const FILE_SIZE_MAX_LIMIT = 500 * 1024 * 1024;
 
-function Reference() {
+function ReferenceEdit() {
+    console.log(process.env.REACT_APP_AWS_ACCESS_KEY_ID)
+    console.log(process.env.REACT_APP_AWS_SECRET_ACCESS_KEY)
+    const s3 = new AWS.S3({
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+        region: "ap-northeast-2"
+    });
+    /*AWS.config.update({
+        apiVersion: "2010-12-01",
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+        region: "ap-northeast-2"
+      })
+      */
+    const inputRef = useRef(null);
+    const selectFilename = '';
     const navigate = useNavigate();
- 
-    const { pathname } = useLocation();
-    const [isLogin, setIsLogin] = useState(false);
-
+    let utfurl;
+    const pathname = useLocation();
+    const { no } = useParams();
+    let fileName;
+    const [fFile, setfFile] = useState()
     useEffect(() => {
         window.scrollTo(0, 425);
     }, [pathname]);
 
-    //catch 문 넣기
+    const [name, setName] = useState('');
+    const [title, setTitle] = useState(pathname.state.제목);
+    const [content, setContent] = useState(pathname.state.내용);
+    const [file, setFile] = useState()
     useEffect(() => {
-        console.log("로그인 검증 시작");
-        Axios.get('http://localhost:8080/checkuser').then((response) => {
-            console.log(response.data);
-            setIsLogin(true);
-
-        })
+        if (pathname.state.url !== null) {
+            fileName = decodeURIComponent(pathname.state.url.replace('https://mymarubucket.s3.ap-northeast-2.amazonaws.com/', ''));
+            console.log("pathname url 이다 이다이다이다" + fileName);
+            const getObjectParams = {
+                Bucket: "mymarubucket", // 다운할 버킷
+                Key: fileName, // 다운할 파일 경로
+            };
+            s3.getObject(getObjectParams, (error, data) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    const file = new File([data.Body], fileName, { type: data.ContentType });
+                    setName(fileName);
+                    setFile(file);
+                    console.log(file)
+                }
+            });
+        }
     }, []);
 
-    const [name, setName] = useState('');
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [file, setFile] = useState()
 
-    const onChangeName = (e) => {
-        setName(e.target.value);
-    }
+
+
+
+
 
     const onChangeTitle = (e) => {
         setTitle(e.target.value);
     }
 
     const onChangeContent = (e) => {
-        setContent(e.target.value);
+        setContent(e.target.files[0].name);
     }
-
     const onChangeFile = (e) => {
         setFile(e.target.files[0]);
         setName(e.target.files[0].name);
@@ -67,13 +91,13 @@ function Reference() {
     const [viewContent, setViewContent] = useState([]);
 
     function trim(stringToTrim) {
-        return stringToTrim.replace(/^\s+|\s+$/g,"");
+        return stringToTrim.replace(/^\s+|\s+$/g, "");
     }
 
     let check_title = title;
 
-	const trimmed_title = trim(check_title);
-	const trimmed_title_length = trimmed_title.length;
+    const trimmed_title = trim(check_title);
+    const trimmed_title_length = trimmed_title.length;
 
     function onSubmit(e) {
         e.preventDefault();
@@ -88,7 +112,7 @@ function Reference() {
 
             return false;
         }
-        
+
         /*if (file.size !== undefined) {
             if (file.size > FILE_SIZE_MAX_LIMIT) {
                 alert("500MB 이하로 업로드 해주세요.")
@@ -99,7 +123,7 @@ function Reference() {
         if (file !== undefined) {
             if (file.size > FILE_SIZE_MAX_LIMIT) {
                 alert("500MB 이하로 업로드 해주세요.")
-    
+
                 return false;
             }
             formData.append("file", file);
@@ -113,7 +137,7 @@ function Reference() {
         //console.log("파일 용량: " + file.size);
         Axios({
             method: "POST",
-            url: 'http://localhost:8080/add',
+            url: `http://localhost:8080/edit/${no}`,
             data: formData,
             headers: {
                 "Content-Type": "multipart/form-data; charset=utf-8;",
@@ -136,7 +160,12 @@ function Reference() {
 
     return (
         <div>
-            <Banner title="고객지원" subTitle="마루는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-04" isMenu="d-none"></Banner>
+            <div id="sub-visual" class="bg-04">
+                <div class="sub_tit">
+                    <h1>고객지원</h1>
+                    <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
+                </div>
+            </div>
             <Container style={{
                 minHeight: `calc(100vh - 120px)`,
             }}>
@@ -145,28 +174,34 @@ function Reference() {
                         <p class="sub_title">자료실</p>
                     </div>
                 </div>
-                {isLogin ? <form accept-charset="UTF-8" onSubmit={onSubmit} >
+
+                <form accept-charset="UTF-8" onSubmit={onSubmit} >
                     <div>
                         <div class="form-group mb-3">
-                            <input class="form-control" type="text"
+                            <input class="form-control " type="text"
                                 placeholder="제목을 입력하세요."
+                                defaultValue={title}
                                 onChange={onChangeTitle}
                                 name='title'
                             />
                         </div>
                         <div>
-                           
                             <div className='d-flex mb-3'>
-                                <label className="input-file-button edit-load" for="input-file"><spen className="edit-btn">파일 선택</spen></label>
-                                <input class="upload-name form-control load-name" onChange={onChangeFile} value={name} disabled="disabled"></input>
+                            <label className="input-file-button edit-load" for="input-file"><spen className="edit-btn">파일 선택</spen></label>
+                            <input class="upload-name form-control load-name" onChange={onChangeFile} value={name} disabled="disabled"></input>
                             </div>
-                            <input class="form-control mb-3" style={{ display: "none" }} id="input-file" onChange={onChangeFile} enctype="multipart/form-data" type="file" name="file" />
-
+                            <input class="form-control mb-3" style={{ display: "none" }} id="input-file" onChange={onChangeFile} enctype="multipart/form-data" type="file" ref={inputRef} defaultValue={fFile} name="file" />
                         </div>
+
                         <EditorComponent content={content} setContent={setContent} />
 
                         {/*} <div class="form-group">
-
+<form onChange={onChangeFile}>
+                        <div>
+                            <input class="form-control mb-3" enctype="multipart/form-data" type="file" ref={inputRef} defaultValue={fFile} name="file" />
+                            
+                        </div>
+                        </form>
                         <label for="exampleInputContent1" class="form-label mt-4">내용</label>
                         <input class="form-control" type="text"
                             placeholder="내용을 입력하세요."
@@ -181,24 +216,15 @@ function Reference() {
                             size='lg'
                             className="submit-button write-btn1"
                             type="submit"
-                        >글 쓰기</Button>
+                        >수정하기</Button>
                     </div>
                 </form>
-                : 
-                    <div className='d-block text-center' style={{ height: "100%", padding: "4rem 0" }}>
-                        <TbError404 size={300} />
-                        <h1>접근 할 수 없는 페이지 입니다.</h1>
-                        <h4 className='text-muted'>입력하신 주소의 페이지를 찾을 수 없거나 서비스 연결 오류일 수 있습니다. 주소를 확인하셔서 잠시 후 다시 이용해주세요.</h4>
-                    </div>}
-
-
-            
             </Container>
         </div>
     )
 }
 
-export default Reference
+export default ReferenceEdit
 /*
 import { useEffect, useState } from 'react';
 import React from 'react';

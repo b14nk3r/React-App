@@ -34,6 +34,15 @@ import Axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Tech from '../Tech';
+import TechDetails from '../TechDetails';
+import ReferenceEdit from '../ReferenceEdit';
+import CompanyInfo from '../companyComponent/CompanyInfo';
+import CompanyMap from '../companyComponent/CompanyMap';
+
+
+import { Fab } from '@mui/material';
+import { Call } from '@mui/icons-material';
 
 
 
@@ -77,15 +86,21 @@ const Header = () => {
     return (
         <header>
 
+                <Fab className="floating-text" variant="extended" style={{ position: "fixed", bottom: "20px", right: "20px", boxShadow: "none", backgroundColor: "#4caf50", color: "white" }}>
+                    <Call sx={{ mr: 1 }} />
+                    031-796-9390
+                </Fab>
+        
+
             <Router>
 
                 <Navbar fixed="top" expand="lg" variant='dark' className={navbar ? 'bg-dark' : 'bg-transparent'} >
                     <Container className='top_con '>
 
                     
-                 
+                    <Nav.Link as={Link} to="/">
                             <img className='' src={Logo} style={{ height: '50px', width: '60px ' }}></img>
-              
+                            </Nav.Link>
                    
                    
                         
@@ -97,8 +112,10 @@ const Header = () => {
                         <Navbar.Offcanvas className='bg-dark'>
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title>
-                                    
+
+                                <Nav.Link as={Link} to="/">
                                 <img className='' src={Logo} style={{ height: '50px', width: '60px ' }}></img>
+                                </Nav.Link>
 
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
@@ -106,11 +123,12 @@ const Header = () => {
 
                             <Container className="d-flex justify-content-center">
                                 <Nav className="d-flex header-font" >
-                                    <Nav.Link className='mx-3 text-white' as={Link} to="/">홈</Nav.Link>
+                           
                                     <Nav.Link className='mx-3 text-white' as={Link} to="/LiionBattery">Li-Ion</Nav.Link>
-                                    <Nav.Link className='mx-3 text-white' as={Link} to="/Company">회사 소개</Nav.Link>
                                     <Nav.Link className='mx-3 text-white' as={Link} to="/Product">제품 소개</Nav.Link>
-                                    <Nav.Link className='mx-3 text-white' as={Link} to="/ReferenceWrite">고객 지원</Nav.Link>
+                                    <Nav.Link className='mx-3 text-white' as={Link} to="/Tech">기술현황</Nav.Link>
+                                    <Nav.Link className='mx-3 text-white' as={Link} to="/ReferenceWrite">자료실</Nav.Link>
+                                    <Nav.Link className='mx-3 text-white' as={Link} to="/Company">회사 소개</Nav.Link>
                                 </Nav>
 
                         
@@ -137,7 +155,11 @@ const Header = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/ReferenceWrite" element={<ReferenceWrite />} />
-                    <Route path="/Company" element={<Company />} />
+                 
+                    <Route path="/Company" element={<Company />}>
+                        <Route path='/Company' element={<CompanyInfo />} />
+                        <Route path='/Company/CompanyMap' element={<CompanyMap />} />
+                    </Route>
 
                     <Route path="/LiionBattery" element={<LiionBattery />} >
                         <Route path='/LiionBattery/' element={<LiionComposition />} />
@@ -147,6 +169,9 @@ const Header = () => {
                     </Route>
 
                     <Route path="/Product" element={<Product />} />
+                    <Route path="/Tech" element={<Tech />} />
+                    <Route path='/TechDetails/:no' element={<TechDetails />} />
+                    <Route path='/edit/:no' element={<ReferenceEdit />} />
                     <Route path="/Reference" element={<Reference />} />
                     <Route path="/AdminPassword" element={<AdminPassword />} />
                     <Route path='/details/:no' element={<ReferenceDetails />} />

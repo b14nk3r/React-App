@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import ReactHtmlParser from 'react-html-parser'
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate} from "react-router-dom";
 import { IoMdDownload } from "react-icons/io";
 //*완료 footer 컴포넌트 따로만들기
 //*완료 목록으로 버튼만들기
@@ -12,7 +12,6 @@ import { IoMdDownload } from "react-icons/io";
 
 //부트스트랩 클래스네임 보면서 멋있게 바꾸기
 //가능하다면 게시판 상세 axios말고 props로 가지고오기 
-//사진같은거 애니메이션 추가
 //헤더 하나로 묶어서 between 옵션으로 수정 하던지 바꾸기
 //회사소개 제품소개등 띄어쓰기 붙히기
 //BSONTypeError 404띄우기
@@ -34,9 +33,12 @@ import { IoMdDownload } from "react-icons/io";
 //폰트 크기 반응형으로 바꾸기
 //배포전에 콘솔로그 제거
 //로고 pptx 고화질로 저장 레지스트리편집
+//테이블 반응형 크기 개선 필요
+//기술현황 -> 시험성적서 교체
 
 
 const Board = () => {
+  const navigate = useNavigate();
   console.log("렌더링");
   let isFile = "파일 없음";
   let fileName;
@@ -86,6 +88,16 @@ const Board = () => {
     console.log(sFileSize);
   }
 
+  const handleDelete = () => {
+    if (window.confirm('정말 삭제하시겠습니까?')){
+      Axios.post(`http://localhost:8080/delete/${no}`).then(function (response) {
+      console.log(response);
+      navigate('/ReferenceWrite');
+  })
+  }
+    
+  };
+
   //const fileName = viewContent.url.replace('https://mymarubucket.s3.ap-northeast-2.amazonaws.com/original/');
   //console.log(fileName);
   return (
@@ -93,7 +105,7 @@ const Board = () => {
       <div id="sub-visual" class="bg-04">
         <div class="sub_tit">
           <h1>고객지원</h1>
-          <h5>한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다.</h5>
+          <h5>마루는 언제나 당신의 안전을 먼저 생각합니다.</h5>
         </div>
       </div>
       <Container style={{
@@ -104,6 +116,12 @@ const Board = () => {
             <p class="sub_title">자료실</p>
           </div>
         </div>
+
+     
+        <div className='d-flex justify-content-end mb-5 jus' >
+        <Link to={`/edit/${no}`} state={{ 제목: viewContent.제목, 내용: viewContent.내용, url: viewContent.url, fileSize: viewContent.fileSize }}><Button className='write-btn write-btn1' variant="dark">수정하기</Button></Link>
+        <Link><Button className='ms-2 write-btn write-btn1' variant="dark" onClick={handleDelete}>삭제하기</Button></Link>
+          </div>
 
         <div className='text-break border py-4 px-4'>
           <div className='details-text'>
@@ -131,7 +149,7 @@ const Board = () => {
         </div>
 
         <div className='d-flex justify-content-center my-3'>
-          <Link to="/ReferenceWrite"><Button className='btn-a' variant="dark" size='lg'>목록으로</Button></Link>
+          <Link to="/ReferenceWrite"><Button className='write-btn1' variant="dark" size='lg'>목록으로</Button></Link>
         </div>
       </Container>
     </div>

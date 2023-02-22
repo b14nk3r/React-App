@@ -181,6 +181,29 @@ app.post('/add', uploader.single("file"), function (요청, 응답) {
   });
 });
 
+app.post('/edit/:no', uploader.single("file"), function(요청, 응답){
+  //ObjectId('${parseInt(요청.params.id)}')
+  const title = 요청.body.title;
+  const content = 요청.body.content;
+  const fileSize = 요청.body.fileSize;
+  console.log(title);
+  console.log(요청.body);
+  응답.send('전송완료')
+  db.collection('post').updateOne( { _id : ObjectId(요청.params.no)}, {$set : { 제목 : title, 내용 : content, url : url, fileSize : fileSize }} , function(에러, 결과){
+    console.log('저장완료')
+  })
+
+});
+
+app.post('/delete/:no', function(요청, 응답){
+  //`ObjectId('${parseInt(요청.params.id)}')`
+  db.collection('post').deleteOne( { _id : ObjectId(요청.params.no)} , function(에러, 결과){
+    console.log(결과);
+  })
+  응답.send(결과);
+
+});
+
 
 app.get('/list', function (요청, 응답) {
   db.collection('post').find().sort({ _id: -1 }).toArray(function (에러, 결과) {
@@ -276,8 +299,8 @@ const generateRefreshToken = (id) => {
 
 // login 요청 및 성공시 access token, refresh token 발급
 app.post("/login", (req, res) => {
-  let id = req.body.id;
-  let pw = req.body.pw;
+  let id = createHashedPassword(req.body.id);
+  let pw = createHashedPassword(req.body.pw);
   console.log(id);
   console.log(pw);
 
@@ -339,6 +362,11 @@ app.post("/logout", (req, res) => {
 
   //res.json({ accessToken, refreshToken });
 });
+
+
+const createHashedPassword = (password) => {
+  return crypto.createHash("sha256").update(password).digest("base64");
+};
 
 
 

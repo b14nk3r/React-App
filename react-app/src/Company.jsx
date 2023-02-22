@@ -6,7 +6,10 @@ import LiionComposition from './liionComponent/LiionComposition'
 
 import Banner from './Banner'
 
-//이 곳 li a태그 호버
+import Company1 from './images/company1.jpg'
+import Company2 from './images/company2.jpg'
+import Company3 from './images/company3.jpg'
+
 
 import {
   BrowserRouter as Router,
@@ -41,29 +44,21 @@ const Company = () => {
   return (
     <div>
 
-      <Banner title="회사소개" subTitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-05" isMenu="snb"></Banner>
+      <Banner title="회사소개" subTitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-02" isMenu="snb" linkOne="/Company" linkNameOne="마루" linkTwo="/Company/CompanyMap" linkNameTwo="찾아오시는 길" isLi3="d-none" isLi4="d-none"></Banner>
 
       <Container class="sub-container">
         <Outlet />
-
-        <div class="row relative container2">
-
-          <div class="col-md-12">
-
-            <p class="sub_title">인사말</p>
-
-          </div>
-
-        </div>
-
-
-
       </Container>
 
-      
+      <div className='add'>
+
+      </div>
+
 
     </div>
 
+
   )
 }
+
 export default Company

@@ -19,10 +19,11 @@ const Footer = () => {
                         </div>
 
                         <div className='d-flex '>
-                            <p className='text-center me-3 fo'>대표번호 : 031-796-9390</p>
+                            <p className='text-center me-3 fo'>Tel : 031-796-9390</p>
                              {/* <p className='text-center me-3 fo'>Tel : 053-564-2201~4</p>*/}
-                            <p className='text-center me-3 fo'> Fax : 031 - 796 - 9391</p>
-                            <p className='text-center me-3 fo'>Email:  www.maru.biz</p>
+                            <p className='text-center me-3 fo'> Fax : 031-796-9391</p>
+                            
+                            <p className='text-center me-3 fo'>HomePage:  www.maru.biz</p>
                         </div>
                        {/* <p className='fo fo1 mb-2'>Copyright (c)HANKOOKFIRE. All Rights Reserved.</p> */}
                         </Container>

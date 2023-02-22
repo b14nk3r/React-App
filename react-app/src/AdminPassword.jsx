@@ -73,9 +73,9 @@ const AdminPassword = () => {
                 </div>
                 <form accept-charset="UTF-8" onSubmit={onSubmit} className="form-group">
                     <div className='form-group'>
-                        <label for="exampleInputPassword1" className="form-label mt-4">관리자 로그인</label>
-                        <input type="text" className="form-control mb-3" name='id' onChange={onChangeId} placeholder="아이디를 입력하세요." />
-                        <input type="password" className="form-control mb-3" name='pw' onChange={onChangePw} placeholder="비밀번호를 입력하세요." />
+                        <label for="exampleInputPassword1" className="form-label mt-4 admin-text">관리자 로그인</label>
+                        <input type="text" className="form-control mb-3 placeholder-text" name='id'  onChange={onChangeId} placeholder="아이디를 입력하세요." />
+                        <input type="password" className="form-control mb-3 placeholder-text" name='pw' onChange={onChangePw} placeholder="비밀번호를 입력하세요." />
                         <div className='d-flex justify-content-center' style={{ paddingTop: "50px" }}>
                             <Button
                                 variant='dark'

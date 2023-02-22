@@ -69,7 +69,7 @@ const ReferenceWrite = () => {
     <div>
    
 
-      <Banner title="고객지원" subTitle="한국소방기구제작소는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-04" isMenu="d-none"></Banner>
+      <Banner title="고객지원" subTitle="마루는 언제나 당신의 안전을 먼저 생각합니다." backgroundImg="bg-04" isMenu="d-none"></Banner>
 
   
       <Container className='' style={{
@@ -98,6 +98,7 @@ const ReferenceWrite = () => {
             nextPageText="›"
             onChange={handlePageChange}/>
         </div>
+        
 
         <Routes>
           <Route path="/AdminPassword" element={<AdminPassword />}></Route>

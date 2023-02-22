@@ -17,10 +17,10 @@ const Banner = (props) => {
           </div>
           
           <ul className={props.isMenu}>
-          <li><Link to={props.linkOne}>{props.linkNameOne}</Link></li>
-          <li><Link to={props.linkTwo}>{props.linkNameTwo}</Link></li>
-          <li><Link to={props.linkThree}>{props.linkNameThree}</Link></li>
-          <li><Link to={props.linkFour}>{props.linkNameFour}</Link></li>
+          <li className={props.isLi1}><Link to={props.linkOne}>{props.linkNameOne}</Link></li>
+          <li className={props.isLi2}><Link to={props.linkTwo}>{props.linkNameTwo}</Link></li>
+          <li className={props.isLi3}><Link to={props.linkThree}>{props.linkNameThree}</Link></li>
+          <li className={props.isLi4}><Link to={props.linkFour}>{props.linkNameFour}</Link></li>
         </ul> : 
       </div>
   )

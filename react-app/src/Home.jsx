@@ -57,8 +57,8 @@ const Home = () => {
 
                     <Carousel.Caption className='main_tit'>
 
-                        <h4 className='main_tit1 mb-3'>매년 늘어가는 전기차화재 </h4>
-                        <h1 className='main_tit2 mb-3 '>전용소화기는 필수입니다 </h1>
+                        <h4 className='main_tit4 mb-3'>매년 늘어가는 전기차화재 </h4>
+                        <h1 className='main_tit5 '>전용소화기는 필수입니다 </h1>
 
                     </Carousel.Caption>
 
@@ -91,6 +91,7 @@ const Home = () => {
                                     리튬이온 배터리 화재는 <br /> 전용 소화기로 진압해야합니다.
                                 </h4>
 
+                                <Link className='card-link' to="/LiionBattery">
                                 <p className='mb-3 view_more'
                                     data-aos="fade-zoom-in"
                                     data-aos-easing="ease-in-back"
@@ -98,14 +99,13 @@ const Home = () => {
                                     data-aos-offset="0">
                                     VIEW MORE
                                 </p>
+                                </Link>
 
                             </div>
 
                         </div>
 
-
-                        <div class="subimage col-md-8"
-                            >
+                        <div class="subimage col-md-8">
 
                             <img
                             data-aos="zoom-in"
@@ -139,13 +139,14 @@ const Home = () => {
                                     data-aos-offset="0">
                                     마루를 소개합니다.
                                 </h4>
-
+                                <Link className='card-link' to="/Company">
                                 <p data-aos="fade-zoom-in"
                                     data-aos-easing="ease-in-back"
                                     data-aos-delay="200"
                                     data-aos-offset="0"
                                     className='mb-3 view_more'>VIEW MORE
                                 </p>
+                                </Link>
 
                             </div>
 
@@ -208,7 +209,6 @@ const Home = () => {
 
                                     </div>
 
-
                                     <div className='sub_tex1' data-aos="zoom-in-right">
 
                                         <h4 className='mt-5'>우수한 침투력</h4>
@@ -234,9 +234,11 @@ const Home = () => {
 
                                     </div>
 
+                                    <Link className='card-link' to="/Product">
                                     <p className='align-bottom v_more' data-aos="zoom-in-left">
                                         VIEW MORE
                                     </p>
+                                    </Link>
 
                                 </div>
 
@@ -261,17 +263,6 @@ const Home = () => {
                     </div>
 
                 </div>
-
-
-
-
-
-
-
-
-
-
-
 
                 <div className='card_b m-auto my-5' >
 
@@ -299,16 +290,20 @@ const Home = () => {
 
                 <div className='card_box '>
 
+               
                     <div className='card-box d-flex flex-wrap '>
 
-                        <div className='d-flex col-md-6 flex-grow-1 file '
+                    <Link className='card-link d-flex col-md-6 flex-grow-1 ' to="/ReferenceWrite">
+                        <div className='d-flex file'
                              data-aos="zoom-in-right">
-
+                                   
+                            <div className='mid'>
                             <img
                                 className="CardImg1 "
                                 src={CardImg1}
                                 alt="First slide"
                             />
+                            </div>
 
                             <div className='card_text' >
 
@@ -317,18 +312,26 @@ const Home = () => {
                                 <p>사용영상을 <br /> 확인해보세요</p>
 
                             </div>
+                           
 
                         </div>
-
-                        <div className='d-flex col-md-6 flex-grow-1 youtube '
+                        </Link>
+                      
+                      
+                   
+                        <Link className='card-link d-flex col-md-6 flex-grow-1' to="/Product">
+                        <div className='d-flex youtube'
                         data-aos="zoom-in-right"
                            >
-
+                            
+                            <div className='mid'>
                             <img
                                 className="CardImg2 "
                                 src={CardImg2}
                                 alt="First slide"
                             />
+                            </div>
+                      
 
 
                             <div class="card_text">
@@ -339,40 +342,53 @@ const Home = () => {
                             </div>
 
                         </div>
+                        </Link>
+                       
 
                     </div>
 
 
                     <div className='card-box d-flex flex-wrap  '>
 
-                        <div className='d-flex col-md-6 flex-grow-1 map'
+
+                    <Link className='card-link d-flex col-md-6 flex-grow-1 ' to="/Product">
+                        <div className='d-flex map'
                             data-aos="zoom-in-right">
 
+<div className='mid'>
                             <img
                                 className="CardImg3 "
                                 src={CardImg3}
                                 alt="First slide"
                             />
+                            </div>
+                      
+
 
                             <div class="card_text">
 
                                 <h2>찾아오시는 길</h2>
-                                <p>찾아오시는 길을 <br></br> 확인해보세요</p>
+                                <p>찾아오시는길을<br /> 확인해보세요</p>
 
                             </div>
 
                         </div>
+                        </Link>
+                     
 
-                        <div className='d-flex col-md-6 flex-grow-1 call '
+                        <Link className='card-link d-flex col-md-6 flex-grow-1 ' to="tel:031-796-9390">
+
+                        <div className='d-flex call'
                         data-aos="zoom-in-right"
                         >
                             
-
+                            <div className='mid'>
                             <img
                                 className="CardImg4 "
                                 src={CardImg4}
                                 alt="First slide"
                             />
+                            </div>
 
                             <div class="card_text">
 
@@ -382,6 +398,8 @@ const Home = () => {
                             </div>
 
                         </div>
+                        </Link>
+                       
 
                     </div>
 
